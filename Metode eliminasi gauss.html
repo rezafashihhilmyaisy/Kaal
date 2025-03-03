@@ -6,8 +6,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; My sample book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Metode eliminasi gauss &#8212; My sample book</title>
   
   
   
@@ -56,9 +57,12 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
-    <link rel="index" title="Index" href="#" />
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Metode eliminasi gauss';</script>
+    <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Sistem Persamaan Linier" href="Sistem%20Persamaan%20Linier.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -121,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -178,10 +180,10 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Sistem%20Persamaan%20Linier.html">Sistem Persamaan Linier</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Metode%20eliminasi%20gauss.html">Metode eliminasi gauss</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Metode eliminasi gauss</a></li>
 </ul>
 
     </div>
@@ -253,7 +255,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fgenindex.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FMetode eliminasi gauss.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -265,6 +267,54 @@
   </span>
 <span class="btn__text-container">Open issue</span>
 </a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Metode eliminasi gauss.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
 </li>
       
   </ul>
@@ -306,7 +356,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -317,11 +369,22 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1></h1>
+    <h1>Metode eliminasi gauss</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-metode-gauss">pengertian metode gauss</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penyelesaian">penyelesaian</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -331,13 +394,106 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
+  <section class="tex2jax_ignore mathjax_ignore" id="metode-eliminasi-gauss">
+<h1>Metode eliminasi gauss<a class="headerlink" href="#metode-eliminasi-gauss" title="Link to this heading">#</a></h1>
+<section id="pengertian-metode-gauss">
+<h2>pengertian metode gauss<a class="headerlink" href="#pengertian-metode-gauss" title="Link to this heading">#</a></h2>
+<p>Eliminasi Gauss adalah suatu metode untuk mengoperasikan nilai-nilai di dalam matriks sehingga menjadi matriks yang lebih sederhana lagi. Dengan melakukan operasi baris sehingga matriks tersebut menjadi matriks yang baris. Ini dapat digunakan sebagai salah satu metode penyelesaian persamaan linear dengan menggunakan matriks. Caranya dengan mengubah persamaan linear tersebut ke dalam matriks teraugmentasi dan mengoperasikannya. Setelah menjadi matriks baris, lakukan substitusi balik untuk mendapatkan nilai dari variabel-variabel tersebut.</p>
+<section id="penyelesaian">
+<h3>penyelesaian<a class="headerlink" href="#penyelesaian" title="Link to this heading">#</a></h3>
+<p>2𝑥+𝑦−𝑧=8
+−3𝑥−𝑦+2𝑧=−11
+−2𝑥+𝑦+2𝑧=−3</p>
+<ol class="arabic simple">
+<li><p>Langkah 1: Bentuk matriks augmented</p></li>
+</ol>
+<p>2 1 -1    | 8
+-3 -1 2   |-11
+-2 1 2    |-3</p>
+<ol class="arabic simple" start="2">
+<li><p>Langkah 2: Eliminasi baris pertama</p></li>
+</ol>
+<ul class="simple">
+<li><p>Kita kalikan baris pertama dengan 3 dan tambahkan ke baris kedua:</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(R_2 =&gt; R_2+3 R_1\)</span></p>
+<ul class="simple">
+<li><p>Kita kalikan baris pertama dengan 2 dan tambahkan ke baris ketiga:</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(R_3=&gt;R_3+2 R_1\)</span></p>
+<p>Hasilnya:</p>
+<p>2 1 -1  |8
+0 2 -1  |13
+0 3 0   |13</p>
+<ol class="arabic simple" start="3">
+<li><p>Langkah 3: Eliminasi baris kedua</p></li>
+</ol>
+<ul class="simple">
+<li><p>Kita kalikan baris kedua dengan 3 dan dan tambahkan ke baris kedua:</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(R_2 =&gt; R_2+3 R_1\)</span></p>
+<ul class="simple">
+<li><p>Kita kalikan baris pertama dengan 2 dan tambahkan ke baris ketiga:</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(R_3 =&gt; R_3+2 R_1\)</span></p>
+<p>Hasilnya:</p>
+<p>2 1 -1  |8
+0 2 -1  |13
+0 3 0   |13</p>
+<ol class="arabic simple" start="4">
+<li><p>Langkah 3: Eliminasi baris kedua</p></li>
+</ol>
+<ul class="simple">
+<li><p>Kita kalikan baris kedua dengan 3 dan kurangkan dari baris ketiga:</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(R_3=&gt;R_3-2R_2\)</span></p>
+<p>Hasilnya:</p>
+<p>2 1 -1  |8
+0 2 -1  |13
+0 0 1.5 |1.5</p>
+<ol class="arabic simple" start="5">
+<li><p>Langkah 4: Bentuk eselon baris atas</p></li>
+</ol>
+<ul class="simple">
+<li><p>Kita bagi baris ketiga dengan 1.5 untuk mendapatkan elemen pivot 1:</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(R_{3} = R_{3}/1.5\)</span></p>
+<p>Hasilnya:</p>
+<p>2 1 -1 8
+0 2 -1 13
+0 0 1  1</p>
+<ol class="arabic simple" start="6">
+<li><p>Langkah 5: Substitusi balik (back substitution)</p></li>
+</ol>
+<p>z = 1, y = 13 - (- 1 . 1) = 14, x = 8 - 1/2 . 14 = 1</p>
+<p>Jadi, solusi dari sistem persamaan linear ini adalah:</p>
+<p>x = 1 , y = 7 , z = 1</p>
+<p>hasil dari grafis geogebra
+<img alt="geogebra-export" src="https://hackmd.io/_uploads/B1wCc8QjJx.png" />
+<a class="reference external" href="https://">https://www.geogebra.org/classic/k7aht8zx</a></p>
+</section>
+</section>
+</section>
 
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
-</div>
-
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
@@ -349,12 +505,39 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Sistem%20Persamaan%20Linier.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Sistem Persamaan Linier</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-metode-gauss">pengertian metode gauss</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penyelesaian">penyelesaian</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
