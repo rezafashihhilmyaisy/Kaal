@@ -9,15 +9,15 @@ Eliminasi Gauss adalah suatu metode untuk mengoperasikan nilai-nilai di dalam ma
 
 ### penyelesaian
 
-2𝑥+𝑦−𝑧=8
-−3𝑥−𝑦+2𝑧=−11
-−2𝑥+𝑦+2𝑧=−3
+ $2𝑥+𝑦−𝑧=8$
+$−3𝑥−𝑦+2𝑧=−11$
+$−2𝑥+𝑦+2𝑧=−3$
 
 1. Langkah 1: Bentuk matriks augmented
 
-2 1 -1    | 8
--3 -1 2   |-11
--2 1 2    |-3
+$2$ $1$ $-1$    $| 8$
+$-3$ $-1$ $2$   $|-11$
+$-2$    $1$ $2$    $|-3$
 
 2. Langkah 2: Eliminasi baris pertama
 
@@ -31,9 +31,9 @@ $R_3=>R_3+2 R_1$
 
 Hasilnya:
 
-2 1 -1  |8
-0 2 -1  |13
-0 3 0   |13
+$2$ $1$ $-1$  $|8$
+$0$ $2$ $-1$  $|13$
+$0$ $3$ $0$   $|13$
 
 3. Langkah 3: Eliminasi baris kedua
 
@@ -47,9 +47,9 @@ $R_3 => R_3+2 R_1$
 
 Hasilnya:
 
-2 1 -1  |8 
-0 2 -1  |13
-0 3 0   |13
+$2$ $1$ $-1$  $|8$
+$0$ $2$ $-1$  $|13$
+$0$ $3$ $0$   $|13$
 
 4. Langkah 3: Eliminasi baris kedua
 
@@ -59,9 +59,9 @@ $R_3=>R_3-2R_2$
 
 Hasilnya:
 
-2 1 -1  |8
-0 2 -1  |13
-0 0 1.5 |1.5
+$2$ $1$ $-1$  $|8$
+$0$ $2$ $-1$  $|13$
+$0$ $0$ $1.5$ $|1.5$
 
 5. Langkah 4: Bentuk eselon baris atas
 
@@ -71,17 +71,17 @@ $R_{3} = R_{3}/1.5$
 
 Hasilnya:
 
-2 1 -1 8 
-0 2 -1 13
-0 0 1  1
+$2$ $1$ $-1$ $8$
+$0$  $2$ $-1$ $13$
+$0$ $0$ $1$  $1$
 
 6. Langkah 5: Substitusi balik (back substitution)
 
-z = 1, y = 13 - (- 1 . 1) = 14, x = 8 - 1/2 . 14 = 1
+$z = 1, y = 13 - (- 1 . 1) = 14, x = 8 - 1/2 . 14 = 1$
 
 Jadi, solusi dari sistem persamaan linear ini adalah:
 
-x = 1 , y = 7 , z = 1
+$x = 1 , y = 7 , z = 1$
 
 hasil dari grafis geogebra
 ![geogebra-export](https://hackmd.io/_uploads/B1wCc8QjJx.png)

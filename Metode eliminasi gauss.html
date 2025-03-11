@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Metode eliminasi gauss';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Sistem Persamaan Linier" href="Sistem%20Persamaan%20Linier.html" />
+    <link rel="prev" title="SISTEM PERSAMAAN LINEAR" href="SISTEM%20PERSAMAAN%20LINEAR.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -181,8 +181,7 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Sistem%20Persamaan%20Linier.html">Sistem Persamaan Linier</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="SISTEM%20PERSAMAAN%20LINEAR.html">SISTEM PERSAMAAN LINEAR</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Metode eliminasi gauss</a></li>
 </ul>
 
@@ -401,15 +400,15 @@ document.write(`
 <p>Eliminasi Gauss adalah suatu metode untuk mengoperasikan nilai-nilai di dalam matriks sehingga menjadi matriks yang lebih sederhana lagi. Dengan melakukan operasi baris sehingga matriks tersebut menjadi matriks yang baris. Ini dapat digunakan sebagai salah satu metode penyelesaian persamaan linear dengan menggunakan matriks. Caranya dengan mengubah persamaan linear tersebut ke dalam matriks teraugmentasi dan mengoperasikannya. Setelah menjadi matriks baris, lakukan substitusi balik untuk mendapatkan nilai dari variabel-variabel tersebut.</p>
 <section id="penyelesaian">
 <h3>penyelesaian<a class="headerlink" href="#penyelesaian" title="Link to this heading">#</a></h3>
-<p>2𝑥+𝑦−𝑧=8
-−3𝑥−𝑦+2𝑧=−11
-−2𝑥+𝑦+2𝑧=−3</p>
+<p><span class="math notranslate nohighlight">\(2𝑥+𝑦−𝑧=8\)</span>
+<span class="math notranslate nohighlight">\(−3𝑥−𝑦+2𝑧=−11\)</span>
+<span class="math notranslate nohighlight">\(−2𝑥+𝑦+2𝑧=−3\)</span></p>
 <ol class="arabic simple">
 <li><p>Langkah 1: Bentuk matriks augmented</p></li>
 </ol>
-<p>2 1 -1    | 8
--3 -1 2   |-11
--2 1 2    |-3</p>
+<p><span class="math notranslate nohighlight">\(2\)</span> <span class="math notranslate nohighlight">\(1\)</span> <span class="math notranslate nohighlight">\(-1\)</span>    <span class="math notranslate nohighlight">\(| 8\)</span>
+<span class="math notranslate nohighlight">\(-3\)</span> <span class="math notranslate nohighlight">\(-1\)</span> <span class="math notranslate nohighlight">\(2\)</span>   <span class="math notranslate nohighlight">\(|-11\)</span>
+<span class="math notranslate nohighlight">\(-2\)</span>    <span class="math notranslate nohighlight">\(1\)</span> <span class="math notranslate nohighlight">\(2\)</span>    <span class="math notranslate nohighlight">\(|-3\)</span></p>
 <ol class="arabic simple" start="2">
 <li><p>Langkah 2: Eliminasi baris pertama</p></li>
 </ol>
@@ -422,9 +421,9 @@ document.write(`
 </ul>
 <p><span class="math notranslate nohighlight">\(R_3=&gt;R_3+2 R_1\)</span></p>
 <p>Hasilnya:</p>
-<p>2 1 -1  |8
-0 2 -1  |13
-0 3 0   |13</p>
+<p><span class="math notranslate nohighlight">\(2\)</span> <span class="math notranslate nohighlight">\(1\)</span> <span class="math notranslate nohighlight">\(-1\)</span>  <span class="math notranslate nohighlight">\(|8\)</span>
+<span class="math notranslate nohighlight">\(0\)</span> <span class="math notranslate nohighlight">\(2\)</span> <span class="math notranslate nohighlight">\(-1\)</span>  <span class="math notranslate nohighlight">\(|13\)</span>
+<span class="math notranslate nohighlight">\(0\)</span> <span class="math notranslate nohighlight">\(3\)</span> <span class="math notranslate nohighlight">\(0\)</span>   <span class="math notranslate nohighlight">\(|13\)</span></p>
 <ol class="arabic simple" start="3">
 <li><p>Langkah 3: Eliminasi baris kedua</p></li>
 </ol>
@@ -437,9 +436,9 @@ document.write(`
 </ul>
 <p><span class="math notranslate nohighlight">\(R_3 =&gt; R_3+2 R_1\)</span></p>
 <p>Hasilnya:</p>
-<p>2 1 -1  |8
-0 2 -1  |13
-0 3 0   |13</p>
+<p><span class="math notranslate nohighlight">\(2\)</span> <span class="math notranslate nohighlight">\(1\)</span> <span class="math notranslate nohighlight">\(-1\)</span>  <span class="math notranslate nohighlight">\(|8\)</span>
+<span class="math notranslate nohighlight">\(0\)</span> <span class="math notranslate nohighlight">\(2\)</span> <span class="math notranslate nohighlight">\(-1\)</span>  <span class="math notranslate nohighlight">\(|13\)</span>
+<span class="math notranslate nohighlight">\(0\)</span> <span class="math notranslate nohighlight">\(3\)</span> <span class="math notranslate nohighlight">\(0\)</span>   <span class="math notranslate nohighlight">\(|13\)</span></p>
 <ol class="arabic simple" start="4">
 <li><p>Langkah 3: Eliminasi baris kedua</p></li>
 </ol>
@@ -448,9 +447,9 @@ document.write(`
 </ul>
 <p><span class="math notranslate nohighlight">\(R_3=&gt;R_3-2R_2\)</span></p>
 <p>Hasilnya:</p>
-<p>2 1 -1  |8
-0 2 -1  |13
-0 0 1.5 |1.5</p>
+<p><span class="math notranslate nohighlight">\(2\)</span> <span class="math notranslate nohighlight">\(1\)</span> <span class="math notranslate nohighlight">\(-1\)</span>  <span class="math notranslate nohighlight">\(|8\)</span>
+<span class="math notranslate nohighlight">\(0\)</span> <span class="math notranslate nohighlight">\(2\)</span> <span class="math notranslate nohighlight">\(-1\)</span>  <span class="math notranslate nohighlight">\(|13\)</span>
+<span class="math notranslate nohighlight">\(0\)</span> <span class="math notranslate nohighlight">\(0\)</span> <span class="math notranslate nohighlight">\(1.5\)</span> <span class="math notranslate nohighlight">\(|1.5\)</span></p>
 <ol class="arabic simple" start="5">
 <li><p>Langkah 4: Bentuk eselon baris atas</p></li>
 </ol>
@@ -459,15 +458,15 @@ document.write(`
 </ul>
 <p><span class="math notranslate nohighlight">\(R_{3} = R_{3}/1.5\)</span></p>
 <p>Hasilnya:</p>
-<p>2 1 -1 8
-0 2 -1 13
-0 0 1  1</p>
+<p><span class="math notranslate nohighlight">\(2\)</span> <span class="math notranslate nohighlight">\(1\)</span> <span class="math notranslate nohighlight">\(-1\)</span> <span class="math notranslate nohighlight">\(8\)</span>
+<span class="math notranslate nohighlight">\(0\)</span>  <span class="math notranslate nohighlight">\(2\)</span> <span class="math notranslate nohighlight">\(-1\)</span> <span class="math notranslate nohighlight">\(13\)</span>
+<span class="math notranslate nohighlight">\(0\)</span> <span class="math notranslate nohighlight">\(0\)</span> <span class="math notranslate nohighlight">\(1\)</span>  <span class="math notranslate nohighlight">\(1\)</span></p>
 <ol class="arabic simple" start="6">
 <li><p>Langkah 5: Substitusi balik (back substitution)</p></li>
 </ol>
-<p>z = 1, y = 13 - (- 1 . 1) = 14, x = 8 - 1/2 . 14 = 1</p>
+<p><span class="math notranslate nohighlight">\(z = 1, y = 13 - (- 1 . 1) = 14, x = 8 - 1/2 . 14 = 1\)</span></p>
 <p>Jadi, solusi dari sistem persamaan linear ini adalah:</p>
-<p>x = 1 , y = 7 , z = 1</p>
+<p><span class="math notranslate nohighlight">\(x = 1 , y = 7 , z = 1\)</span></p>
 <p>hasil dari grafis geogebra
 <img alt="geogebra-export" src="https://hackmd.io/_uploads/B1wCc8QjJx.png" />
 <a class="reference external" href="https://">https://www.geogebra.org/classic/k7aht8zx</a></p>
@@ -506,12 +505,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Sistem%20Persamaan%20Linier.html"
+       href="SISTEM%20PERSAMAAN%20LINEAR.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Sistem Persamaan Linier</p>
+        <p class="prev-next-title">SISTEM PERSAMAAN LINEAR</p>
       </div>
     </a>
 </div>
