@@ -41,5 +41,3 @@ Karena kedua sisi sama, properti kedua terpenuhi.
 
 
 Karena kedua properti transformasi linier telah terbukti benar, maka $T(v_1,v_2) = (v_1+v_2,v_1) \)$ adalah transformasi linier
-
-Semoga ini membantu! Jika ingin eksplorasi lebih lanjut, misalnya dengan representasi matriks dari \( T \), beri tahu saya. 

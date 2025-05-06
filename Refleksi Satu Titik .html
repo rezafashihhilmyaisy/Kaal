@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1. Preservasi Penjumlahan: &#8212; My sample book</title>
+    <title>&lt;no title&gt; &#8212; My sample book</title>
   
   
   
@@ -57,12 +57,9 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Tugas Membuktikan Transformasi linier';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Refleksi Satu Titik ';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Transformasi Matriks" href="Transformasi%20Matriks.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -125,6 +122,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,11 +179,11 @@
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="SISTEM%20PERSAMAAN%20LINEAR.html">SISTEM PERSAMAAN LINEAR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Metode%20eliminasi%20gauss.html">Metode eliminasi gauss</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Transformasi%20Matriks.html">Transformasi Matriks</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Preservasi Penjumlahan:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas%20Membuktikan%20Transformasi%20linier.html">1. Preservasi Penjumlahan:</a></li>
 
 </ul>
 
@@ -257,7 +256,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FTugas Membuktikan Transformasi linier.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FRefleksi Satu Titik .html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -287,7 +286,7 @@
       
       
       
-      <li><a href="_sources/Tugas Membuktikan Transformasi linier.md" target="_blank"
+      <li><a href="_sources/Refleksi Satu Titik .md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -371,7 +370,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>1. Preservasi Penjumlahan:</h1>
+    <h1><no title></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -380,9 +379,7 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Preservasi Penjumlahan:</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preservasi-perkalian-skalar">2. Preservasi Perkalian Skalar:</a></li>
+                <ul class="simple visible nav section-nav flex-column">
 </ul>
 
             </nav>
@@ -395,33 +392,90 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>Untuk membuktikan bahwa <span class="math notranslate nohighlight">\(T(v_1,v_2) = (v_1+v_2,v_1)\)</span> adalah transformasi linier, kita perlu memeriksa dua properti utama dari transformasi linier:</p>
-<ol class="arabic simple">
-<li><p>Preservasi Penjumlahan: <span class="math notranslate nohighlight">\(T(\mathbf{u} + \mathbf{v})\)</span> = <span class="math notranslate nohighlight">\(T(\mathbf{u}) + T (\mathbf{v})\)</span></p></li>
-<li><p>Preservasi Perkalian Skalar: <span class="math notranslate nohighlight">\(T(c *\mathbf{v})\)</span> = <span class="math notranslate nohighlight">\(c *T(\mathbf{v})\)</span> , untuk setiap skalar ( c )</p></li>
-</ol>
-<p>Misalkan kita punya dua vektor dalam <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>:
-<span class="math notranslate nohighlight">\(\mathbf{u}\)</span> = <span class="math notranslate nohighlight">\((u_1, u_2)\)</span>, <span class="math notranslate nohighlight">\(\quad \mathbf{v}\)</span> = <span class="math notranslate nohighlight">\((v_1, v_2)\)</span></p>
-<section id="preservasi-penjumlahan">
-<h1>1. Preservasi Penjumlahan:<a class="headerlink" href="#preservasi-penjumlahan" title="Link to this heading">#</a></h1>
-<p><span class="math notranslate nohighlight">\(T(\mathbf{u} + \mathbf{v})\)</span> = <span class="math notranslate nohighlight">\(T((u_1 + v_1, u_2 + v_2))\)</span></p>
-<p>Dengan menerapkan definisi ( T ), kita mendapatkan:
-<span class="math notranslate nohighlight">\(T(u_1+v_1, u_2+v_2) = ((u_1+v_1) + (u_2+v_2), u_1+v_1)\)</span></p>
-<p>Di sisi lain, jika kita menerapkan ( T ) ke masing-masing vektor, kita mendapatkan:</p>
-<p><span class="math notranslate nohighlight">\(T(\mathbf{u}) + T(\mathbf{v}) = (u_1+u_2, u_1) + (v_1+v_2, v_1) = ((u_1+u_2) + (v_1+v_2), u_1+v_1)\)</span></p>
-<p>Karena kedua sisi sama, maka properti pertama terpenuhi.</p>
-</section>
-<section id="preservasi-perkalian-skalar">
-<h1>2. Preservasi Perkalian Skalar:<a class="headerlink" href="#preservasi-perkalian-skalar" title="Link to this heading">#</a></h1>
-<p>Misalkan ( c ) adalah suatu skalar, maka:</p>
-<p><span class="math notranslate nohighlight">\(T(c \mathbf{v}) = T(c v_1, c v_2)\)</span></p>
-<p>Dengan definisi ( T ), kita mendapatkan:</p>
-<p><span class="math notranslate nohighlight">\(T(c v_1, c v_2) = ((c v_1 + c v_2), c v_1)\)</span></p>
-<p>Di sisi lain, jika kita menerapkan ( c ) pada ( T(\mathbf{v}) ), kita mendapatkan:</p>
-<p><span class="math notranslate nohighlight">\(c *T(v_1, v_2) = c (v_1+v_2, v_1) = (c v_1 + c v_2, c v_1)\)</span></p>
-<p>Karena kedua sisi sama, properti kedua terpenuhi.</p>
-<p>Karena kedua properti transformasi linier telah terbukti benar, maka <span class="math notranslate nohighlight">\(T(v_1,v_2) = (v_1+v_2,v_1) \)\)</span> adalah transformasi linier</p>
-</section>
+  <div class="highlight-import notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+
+def reflect_x_equals_a(point, a):
+    &quot;&quot;&quot;Refleksi terhadap garis x = a&quot;&quot;&quot;
+    x, y = point
+    return (2 * a - x, y)
+
+def reflect_y_equals_b(point, b):
+    &quot;&quot;&quot;Refleksi terhadap garis y = b&quot;&quot;&quot;
+    x, y = point
+    return (x, 2 * b - y)
+
+def reflect_y_equals_x(point):
+    &quot;&quot;&quot;Refleksi terhadap garis y = x&quot;&quot;&quot;
+    x, y = point
+    return (y, x)
+
+# Titik awal
+point = (3, 4)
+
+# Menerapkan refleksi terhadap berbagai garis
+point_x_reflected = reflect_x_equals_a(point, 2)
+point_y_reflected = reflect_y_equals_b(point, 2)
+point_xy_reflected = reflect_y_equals_x(point)
+
+# Visualisasi
+fig, ax = plt.subplots(figsize=(6, 6))
+ax.set_xlim(0, 5)
+ax.set_ylim(0, 5)
+ax.axvline(2, color=&#39;gray&#39;, linestyle=&#39;--&#39;, label=&quot;x = 2&quot;)
+ax.axhline(2, color=&#39;gray&#39;, linestyle=&#39;--&#39;, label=&quot;y = 2&quot;)
+ax.plot([0, 5], [0, 5], color=&#39;gray&#39;, linestyle=&#39;--&#39;, label=&quot;y = x&quot;)
+
+# Plot titik
+ax.scatter(*point, color=&#39;blue&#39;, label=&quot;Titik Awal&quot;)
+ax.scatter(*point_x_reflected, color=&#39;red&#39;, label=&quot;Refleksi x = 2&quot;)
+ax.scatter(*point_y_reflected, color=&#39;green&#39;, label=&quot;Refleksi y = 2&quot;)
+ax.scatter(*point_xy_reflected, color=&#39;purple&#39;, label=&quot;Refleksi y = x&quot;)
+
+ax.legend()
+ax.set_title(&quot;Transformasi Refleksi dari Titik&quot;)
+ax.set_xlabel(&quot;X&quot;)
+ax.set_ylabel(&quot;Y&quot;)
+plt.grid()
+plt.show()
+</pre></div>
+</div>
+<p><img alt="image" src="https://hackmd.io/_uploads/HymqCkPxee.png" /></p>
+<p>Grafik yang dihasilkan dari kode Python menunjukkan bagaimana satu titik direfleksikan terhadap tiga garis: ( x = 2 ), ( y = 2 ), dan ( y = x ).
+Elemen pada Grafik</p>
+<ul class="simple">
+<li><p>Titik Awal (Biru): Ini adalah titik yang akan direfleksikan, dengan koordinat (3,4).</p></li>
+<li><p>Garis Refleksi (Putus-Putus):</p></li>
+<li><p>( x = 2 ) (Garis vertikal berwarna abu-abu).</p></li>
+<li><p>( y = 2 ) (Garis horizontal berwarna abu-abu).</p></li>
+<li><p>( y = x ) (Garis diagonal berwarna abu-abu).</p></li>
+<li><p>Titik Refleksi:</p></li>
+<li><p>Refleksi terhadap ( x = 2 ) → (Merah) (1,4).</p></li>
+<li><p>Refleksi terhadap ( y = 2 ) → (Hijau) (3,0).</p></li>
+<li><p>Refleksi terhadap ( y = x ) → (Ungu) (4,3).
+Cara Interpretasi</p></li>
+<li><p>Refleksi terhadap ( x = 2 ):</p></li>
+<li><p>Koordinat x berubah sesuai rumus ( x’ = 2a - x ), sehingga dari (3,4) menjadi (1,4).</p></li>
+<li><p>Y tetap sama karena refleksi terhadap garis vertikal tidak mempengaruhi koordinat y.</p></li>
+<li><p>Refleksi terhadap ( y = 2 ):</p></li>
+<li><p>Koordinat y berubah dengan rumus ( y’ = 2b - y ), sehingga dari (3,4) menjadi (3,0).</p></li>
+<li><p>X tetap sama karena refleksi terhadap garis horizontal tidak mempengaruhi koordinat x.</p></li>
+<li><p>Refleksi terhadap ( y = x ):</p></li>
+<li><p>Koordinat ( (x,y) ) ditukar, sehingga dari (3,4) menjadi (4,3).
+Kesimpulan
+Grafik ini memperlihatkan bagaimana refleksi titik berfungsi dalam geometri koordinat. Dengan melihat titik awal dan hasil refleksi, kita bisa memahami bagaimana setiap refleksi mempengaruhi koordinat. Jika ingin bereksperimen dengan titik lain, cukup ubah nilai titik awal di kode Python.
+Semoga penjelasannya jelas! Jika ingin tambahan visualisasi atau ada pertanyaan lebih lanjut, beri tahu saya.</p></li>
+</ul>
+<p>Cara Interpretasi</p>
+<ul class="simple">
+<li><p>Refleksi terhadap ( x = 2 ):</p></li>
+<li><p>Koordinat x berubah sesuai rumus ( x’ = 2a - x ), sehingga dari (3,4) menjadi (1,4).</p></li>
+<li><p>Y tetap sama karena refleksi terhadap garis vertikal tidak mempengaruhi koordinat y.</p></li>
+<li><p>Refleksi terhadap ( y = 2 ):</p></li>
+<li><p>Koordinat y berubah dengan rumus ( y’ = 2b - y ), sehingga dari (3,4) menjadi (3,0).</p></li>
+<li><p>X tetap sama karena refleksi terhadap garis horizontal tidak mempengaruhi koordinat x.</p></li>
+<li><p>Refleksi terhadap ( y = x ):</p></li>
+<li><p>Koordinat ( (x,y) ) ditukar, sehingga dari (3,4) menjadi (4,3).</p></li>
+</ul>
 
     <script type="text/x-thebe-config">
     {
@@ -453,15 +507,6 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="Transformasi%20Matriks.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Transformasi Matriks</p>
-      </div>
-    </a>
 </div>
                 </footer>
               
@@ -477,9 +522,7 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Preservasi Penjumlahan:</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preservasi-perkalian-skalar">2. Preservasi Perkalian Skalar:</a></li>
+    <ul class="simple visible nav section-nav flex-column">
 </ul>
 
   </nav></div>
