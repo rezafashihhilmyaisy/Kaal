@@ -6,7 +6,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Search - My sample book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Dot Product &#8212; My sample book</title>
   
   
   
@@ -55,12 +57,12 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'search';</script>
-  <script src="_static/searchtools.js"></script>
-  <script src="_static/language_data.js"></script>
-  <script src="searchindex.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Dot Product';</script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="Tugas%20Refleksi%20Satu%20Titik.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -92,7 +94,7 @@
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
-      action="#"
+      action="search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -122,8 +124,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -180,13 +180,13 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="SISTEM%20PERSAMAAN%20LINEAR.html">SISTEM PERSAMAAN LINEAR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Metode%20eliminasi%20gauss.html">Metode eliminasi gauss</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Transformasi%20Matriks.html">Transformasi Matriks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tugas%20Membuktikan%20Transformasi%20linier.html">1. Preservasi Penjumlahan:</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Dot%20Product.html">Dot Product</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Dot Product</a></li>
 </ul>
 
     </div>
@@ -258,7 +258,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fsearch.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FDot Product.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -270,6 +270,54 @@
   </span>
 <span class="btn__text-container">Open issue</span>
 </a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Dot Product.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
 </li>
       
   </ul>
@@ -311,7 +359,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -320,42 +370,130 @@ document.write(`
 </div>
               
               
-  <div class="bd-search-container">
-    <h1>Search</h1>
-    <noscript>
-      <div class="admonition error">
-        <p class="admonition-title">Error</p>
-        <p>Please activate JavaScript to enable the search functionality.</p>
-      </div>
-    </noscript>
-    
-<form class="bd-search d-flex align-items-center"
-      action="#"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-    <div id="search-results"></div>
-  </div>
-  <script>
-    // Activate the search field on page load
-    let searchInput = document.querySelector("form.bd-search input");
-    if (searchInput) {
-        searchInput.focus();
-        searchInput.select();
-        console.log("[PST]: Set focus on search field.");
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Dot Product</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-dot-product">Rumus Dot Product:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh">Contoh:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noted">Noted</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#panjang-vektor-norma-vektor"><strong>Panjang Vektor (Norma Vektor)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-umum-panjang-vektor"><strong>Rumus Umum Panjang Vektor</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Contoh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#catatan-tambahan"><strong>Catatan Tambahan</strong></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="dot-product">
+<h1>Dot Product<a class="headerlink" href="#dot-product" title="Link to this heading">#</a></h1>
+<p>Dot product (atau <strong>hasil kali titik</strong>) adalah operasi matematika antara dua <strong>vektor</strong> yang menghasilkan <strong>angka skalar</strong> (bukan vektor lagi).</p>
+<section id="rumus-dot-product">
+<h2>Rumus Dot Product:<a class="headerlink" href="#rumus-dot-product" title="Link to this heading">#</a></h2>
+<p>Kalau kamu punya dua vektor:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{A} = (a_1, a_2, \dots, a_n), \quad \vec{B} = (b_1, b_2, \dots, b_n)
+\]</div>
+<p>Maka dot product-nya:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{A} \cdot \vec{B} = a_1b_1 + a_2b_2 + \dots + a_nb_n
+\]</div>
+</section>
+<section id="contoh">
+<h2>Contoh:<a class="headerlink" href="#contoh" title="Link to this heading">#</a></h2>
+<p>Misal:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{A} = \begin{bmatrix}2\\ 3 \end{bmatrix}, \quad \vec{B} = \begin{bmatrix} 4\\5 \end{bmatrix}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+\vec{A} \cdot \vec{B} = (2)(4) + (3)(5) = 8 + 15 = 23
+\]</div>
+<p>Makna Dot Product
+Kalau hasilnya positif, berarti sudut antar vektor &lt; 90° (arah relatifnya mirip).</p>
+<p>Kalau hasilnya nol, berarti vektornya tegak lurus (orthogonal).</p>
+<p>Kalau hasilnya negatif, berarti sudut antar vektor &gt; 90° (arah relatifnya berlawanan).</p>
+<section id="noted">
+<h3>Noted<a class="headerlink" href="#noted" title="Link to this heading">#</a></h3>
+<p>jika hasil dua vektor tersebut adalah 0 maka kedua vektor tersebut memiliki garis yang sejajar dan memiliki sudut 90°</p>
+<p><img alt="geogebra-export (1)" src="https://hackmd.io/_uploads/rJcZ9INMlg.png" /></p>
+</section>
+</section>
+<section id="panjang-vektor-norma-vektor">
+<h2><strong>Panjang Vektor (Norma Vektor)</strong><a class="headerlink" href="#panjang-vektor-norma-vektor" title="Link to this heading">#</a></h2>
+<p><strong>Panjang vektor</strong>, atau disebut juga <strong>norma</strong> atau <strong>magnitude</strong>, adalah ukuran seberapa “besar” suatu vektor.</p>
+</section>
+<section id="rumus-umum-panjang-vektor">
+<h2><strong>Rumus Umum Panjang Vektor</strong><a class="headerlink" href="#rumus-umum-panjang-vektor" title="Link to this heading">#</a></h2>
+<p>Untuk vektor <span class="math notranslate nohighlight">\(\vec{v} = \langle v_1, v_2, ..., v_n \rangle\)</span>, panjang (atau norma) vektor ditulis sebagai:</p>
+<div class="math notranslate nohighlight">
+\[
+|\vec{v}| = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2}
+\]</div>
+</section>
+<section id="id1">
+<h2>Contoh<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\vec{v} = \langle 3, 4 \rangle
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+|\vec{v}| = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5
+\]</div>
+</section>
+<section id="catatan-tambahan">
+<h2><strong>Catatan Tambahan</strong><a class="headerlink" href="#catatan-tambahan" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Norma vektor <strong>selalu bernilai positif</strong> atau nol (tidak pernah negatif).</p></li>
+<li><p>Jika panjang vektor = 0, berarti itu <strong>vektor nol</strong> <span class="math notranslate nohighlight">\(\vec{0}\)</span>.</p></li>
+<li><p>Panjang ini penting buat normalisasi (membuat vektor satuan), menghitung jarak, sudut antar vektor, dll.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
     }
-  </script>
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
 
               
               
@@ -364,12 +502,44 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Tugas%20Refleksi%20Satu%20Titik.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-dot-product">Rumus Dot Product:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh">Contoh:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noted">Noted</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#panjang-vektor-norma-vektor"><strong>Panjang Vektor (Norma Vektor)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-umum-panjang-vektor"><strong>Rumus Umum Panjang Vektor</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Contoh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#catatan-tambahan"><strong>Catatan Tambahan</strong></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
