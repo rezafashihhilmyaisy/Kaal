@@ -1,0 +1,908 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Cross Product &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'cross product';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Dot Product" href="Dot%20Product.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to komputasi aljabar linier
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="SISTEM%20PERSAMAAN%20LINEAR.html">SISTEM PERSAMAAN LINEAR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Metode%20eliminasi%20gauss.html">Metode eliminasi gauss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Transformasi%20Matriks.html">Transformasi Matriks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas%20Membuktikan%20Transformasi%20linier.html">1. Preservasi Penjumlahan:</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Dot%20Product.html">Dot Product</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Cross Product</a></li>
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcross product.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/cross product.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Cross Product</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Cross Product</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-hasil-kali-silang">Definisi Hasil Kali Silang</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-formal">🔹 Definisi Formal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sifat-sifat-penting">🔹 Sifat-Sifat Penting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh">🔹 Contoh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-menghitung-hasil-kali-silang">Contoh Menghitung Hasil Kali Silang</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solusi">Solusi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-ortogonalitas">Verifikasi Ortogonalitas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menggunakan-determinan-untuk-menemukan-perkalian-silang">Menggunakan Determinan untuk Menemukan Perkalian Silang</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#vec-u-times-vec-v-begin-vmatrix-u-2-u-3-v-2-v-3-end-vmatrix-vec-i"><span class="math notranslate nohighlight">\(\vec{u} \times \vec{v} =\begin{vmatrix}u_2 &amp; u_3 \\v_2 &amp; v_3 \\\end{vmatrix}\vec{i}\)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#soal-1">soal 1</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jawaban">Jawaban:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#soal-2">soal 2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#soal-3">soal 3</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah">Langkah-langkah:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jawaban-akhir">Jawaban akhir:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#soal-4">soal 4</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Langkah-langkah:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jadi-luas-segitiga-tersebut-adalah-boxed-3-sqrt-30-satuan-luas">Jadi, <strong>luas segitiga tersebut adalah</strong> <span class="math notranslate nohighlight">\(\boxed{3\sqrt{30}}\)</span> satuan luas.</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="cross-product">
+<h1>Cross Product<a class="headerlink" href="#cross-product" title="Link to this heading">#</a></h1>
+<section id="definisi-hasil-kali-silang">
+<h2>Definisi Hasil Kali Silang<a class="headerlink" href="#definisi-hasil-kali-silang" title="Link to this heading">#</a></h2>
+<p>Misalkan</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{u} = \begin{bmatrix} u_1 \\ u_2 \\ u_3 \end{bmatrix} \quad \text{dan} \quad \vec{v} = \begin{bmatrix} v_1 \\ v_2 \\ v_3 \end{bmatrix}
+\end{split}\]</div>
+<p>adalah vektor-vektor di <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>. <strong>Hasil kali silang</strong> dari <span class="math notranslate nohighlight">\(\vec{u}\)</span> dan <span class="math notranslate nohighlight">\(\vec{v}\)</span>, dinotasikan sebagai <span class="math notranslate nohighlight">\(\vec{u} \times \vec{v}\)</span>, adalah vektor:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{u} \times \vec{v} = 
+\begin{bmatrix}
+u_2 v_3 - u_3 v_2 \\
+-(u_1 v_3 - u_3 v_1) \\
+u_1 v_2 - u_2 v_1
+\end{bmatrix}.
+\end{split}\]</div>
+<hr class="docutils" />
+<p><strong>Cross product</strong> (perkalian silang) adalah operasi dalam matematika vektor yang mengambil dua vektor dalam ruang tiga dimensi dan menghasilkan vektor ketiga yang <strong>tegak lurus (normal)</strong> terhadap kedua vektor asal.</p>
+</section>
+<hr class="docutils" />
+<section id="definisi-formal">
+<h2>🔹 Definisi Formal<a class="headerlink" href="#definisi-formal" title="Link to this heading">#</a></h2>
+<p>Jika ada dua vektor:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{A} = \begin{bmatrix} A_x \\ A_y \\ A_z \end{bmatrix}, \quad
+\vec{B} = \begin{bmatrix} B_x \\ B_y \\ B_z \end{bmatrix}
+\end{split}\]</div>
+<p>Maka <strong>cross product</strong> ditulis sebagai:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{A} \times \vec{B} = \begin{bmatrix}
+A_y B_z - A_z B_y \\
+A_z B_x - A_x B_z \\
+A_x B_y - A_y B_x
+\end{bmatrix}
+\end{split}\]</div>
+<p>Hasilnya adalah vektor baru yang:</p>
+<ul class="simple">
+<li><p>Arahnya tegak lurus terhadap <span class="math notranslate nohighlight">\(\vec{A}\)</span> dan <span class="math notranslate nohighlight">\(\vec{B}\)</span></p></li>
+<li><p>Panjangnya sama dengan:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+|\vec{A} \times \vec{B}| = |\vec{A}| \cdot |\vec{B}| \cdot \sin(\theta)
+\]</div>
+<p>di mana <span class="math notranslate nohighlight">\(\theta\)</span> adalah sudut antara <span class="math notranslate nohighlight">\(\vec{A}\)</span> dan <span class="math notranslate nohighlight">\(\vec{B}\)</span></p>
+</section>
+<hr class="docutils" />
+<section id="sifat-sifat-penting">
+<h2>🔹 Sifat-Sifat Penting<a class="headerlink" href="#sifat-sifat-penting" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Tidak komutatif:</p>
+<div class="math notranslate nohighlight">
+\[
+  \vec{A} \times \vec{B} \neq \vec{B} \times \vec{A}
+  \quad \text{(bahkan, } \vec{A} \times \vec{B} = -(\vec{B} \times \vec{A})\text{)}
+  \]</div>
+</li>
+<li><p>Kalau dua vektor sejajar (sudut 0° atau 180°), hasil cross product = 0</p></li>
+<li><p>Sering dipakai dalam fisika untuk menentukan arah gaya, momen, atau bidang</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="contoh">
+<h2>🔹 Contoh<a class="headerlink" href="#contoh" title="Link to this heading">#</a></h2>
+<p>Misalnya:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{A} = \begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix}, \quad
+\vec{B} = \begin{bmatrix}0 \\ 1 \\ 0\end{bmatrix}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{A} \times \vec{B} = \begin{bmatrix}
+0 \cdot 0 - 0 \cdot 1 \\
+0 \cdot 0 - 1 \cdot 0 \\
+1 \cdot 1 - 0 \cdot 0
+\end{bmatrix}
+= \begin{bmatrix}
+0 \\
+0 \\
+1
+\end{bmatrix}
+\end{split}\]</div>
+<p>Jadi hasilnya adalah vektor di arah sumbu-z, tegak lurus terhadap vektor A dan B.</p>
+<p>Berikut adalah penulisan ulang dari isi gambar contoh perhitungan hasil kali silang:</p>
+</section>
+<hr class="docutils" />
+<section id="contoh-menghitung-hasil-kali-silang">
+<h2>Contoh Menghitung Hasil Kali Silang<a class="headerlink" href="#contoh-menghitung-hasil-kali-silang" title="Link to this heading">#</a></h2>
+<p>Misalkan</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{u} = \begin{bmatrix} 2 \\ -1 \\ 4 \end{bmatrix}, \quad \vec{v} = \begin{bmatrix} 3 \\ 2 \\ 5 \end{bmatrix}.
+\end{split}\]</div>
+<p>Temukan <span class="math notranslate nohighlight">\(\vec{u} \times \vec{v}\)</span>, dan verifikasi bahwa hasil kali silang ini tegak lurus terhadap baik <span class="math notranslate nohighlight">\(\vec{u}\)</span> maupun <span class="math notranslate nohighlight">\(\vec{v}\)</span>.</p>
+</section>
+<hr class="docutils" />
+<section id="solusi">
+<h2>Solusi<a class="headerlink" href="#solusi" title="Link to this heading">#</a></h2>
+<p>Menggunakan <strong>definisi</strong>:</p>
+<p><span class="math notranslate nohighlight">\(\vec{u} \times \vec{v} =
+\begin{bmatrix}
+(-1)(5) - (4)(2) \\
+-((2)(5) - (4)(3)) \\
+(2)(2) - (-1)(3)\end{bmatrix}=\begin{bmatrix}-13 \\2 \\7\end{bmatrix}.\)</span>$</p>
+<hr class="docutils" />
+<p>Berikut adalah penulisan ulang dari isi gambar verifikasi hasil kali silang tegak lurus terhadap kedua vektor:</p>
+</section>
+<hr class="docutils" />
+<section id="verifikasi-ortogonalitas">
+<h2>Verifikasi Ortogonalitas<a class="headerlink" href="#verifikasi-ortogonalitas" title="Link to this heading">#</a></h2>
+<p>Untuk memastikan bahwa <span class="math notranslate nohighlight">\(\vec{u} \times \vec{v}\)</span> tegak lurus terhadap <span class="math notranslate nohighlight">\(\vec{u}\)</span> dan <span class="math notranslate nohighlight">\(\vec{v}\)</span>, kita hitung <strong>dot product</strong> (hasil kali titik) berikut:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+(\vec{u} \times \vec{v}) \cdot \vec{u} =
+\begin{bmatrix}
+-13 \\
+2 \\
+7
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+2 \\
+-1 \\
+4
+\end{bmatrix}
+=(-13)(2) + (2)(-1) + (7)(4)= -26 - 2 + 28 = 0.
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+(\vec{u} \times \vec{v}) \cdot \vec{v} =
+\begin{bmatrix}
+-13 \\
+2 \\
+7
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+3 \\
+2 \\
+5
+\end{bmatrix}
+=(-13)(3) + (2)(2) + (7)(5)= -39 + 4 + 35 = 0.\end{split}\]</div>
+<hr class="docutils" />
+<p>Karena hasil dot product keduanya adalah nol, maka dapat disimpulkan bahwa
+<span class="math notranslate nohighlight">\(\vec{u} \times \vec{v}\)</span> <strong>tegak lurus terhadap <span class="math notranslate nohighlight">\(\vec{u}\)</span> dan <span class="math notranslate nohighlight">\(\vec{v}\)</span></strong>. ✅</p>
+<p>Berikut adalah penulisan ulang dari isi gambar tersebut tentang <strong>menggunakan determinan untuk mencari hasil kali silang</strong>:</p>
+</section>
+<hr class="docutils" />
+<section id="menggunakan-determinan-untuk-menemukan-perkalian-silang">
+<h2>Menggunakan Determinan untuk Menemukan Perkalian Silang<a class="headerlink" href="#menggunakan-determinan-untuk-menemukan-perkalian-silang" title="Link to this heading">#</a></h2>
+<p>Pertama, kita bentuk array <span class="math notranslate nohighlight">\(3 \times 3\)</span> seperti berikut:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{vmatrix}
+\vec{i} &amp; \vec{j} &amp; \vec{k} \\
+u_1 &amp; u_2 &amp; u_3 \\
+v_1 &amp; v_2 &amp; v_3 \\
+\end{vmatrix}
+\end{split}\]</div>
+<p>Lalu, hasil kali silang dari <span class="math notranslate nohighlight">\(\vec{u} \times \vec{v}\)</span> dapat dihitung menggunakan determinan minor sebagai berikut:</p>
+</section>
+</section>
+<section id="vec-u-times-vec-v-begin-vmatrix-u-2-u-3-v-2-v-3-end-vmatrix-vec-i">
+<h1><span class="math notranslate nohighlight">\(\vec{u} \times \vec{v} =\begin{vmatrix}u_2 &amp; u_3 \\v_2 &amp; v_3 \\\end{vmatrix}\vec{i}\)</span><a class="headerlink" href="#vec-u-times-vec-v-begin-vmatrix-u-2-u-3-v-2-v-3-end-vmatrix-vec-i" title="Link to this heading">#</a></h1>
+<p><span class="math notranslate nohighlight">\(\begin{vmatrix}u_1 &amp; u_3 \\v_1 &amp; v_3 \\\end{vmatrix} \vec{j}
++\begin{vmatrix}
+u_1 &amp; u_2 \\v_1 &amp; v_2 \\\end{vmatrix}\vec{k}\)</span></p>
+<p>Atau secara eksplisit:</p>
+<div class="math notranslate nohighlight">
+\[\vec{u} \times \vec{v}=
+(u_2v_3 - u_3v_2)\vec{i}
+-(u_1v_3 - u_3v_1)\vec{j}+(u_1v_2 - u_2v_1)\vec{k}\]</div>
+<hr class="docutils" />
+<p>pertama kita membentuk array 3x3 seperti yang ditunjukkan dibawah ini</p>
+<p><img alt="image" src="https://hackmd.io/_uploads/rya0ZRIQgx.png" /></p>
+</section>
+<section id="soal-1">
+<h1>soal 1<a class="headerlink" href="#soal-1" title="Link to this heading">#</a></h1>
+<p>rumus:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Luas} = |\vec{u} \times \vec{v}|
+\]</div>
+<p>Untuk vektor dua dimensi:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{u} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}, \quad \vec{v} = \begin{bmatrix} 2 \\ 1 \end{bmatrix}
+\end{split}\]</div>
+<p>Maka hasil perkalian silang (cross product) dalam 2D:</p>
+<div class="math notranslate nohighlight">
+\[
+|\vec{u} \times \vec{v}| = |(1)(1) - (2)(2)| = |1 - 4| = |-3| = 3
+\]</div>
+<section id="jawaban">
+<h2>Jawaban:<a class="headerlink" href="#jawaban" title="Link to this heading">#</a></h2>
+<p>Luas jajaran genjang tersebut adalah 3 satuan luas.</p>
+</section>
+</section>
+<section id="soal-2">
+<h1>soal 2<a class="headerlink" href="#soal-2" title="Link to this heading">#</a></h1>
+<p>Diberikan:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{u} = \begin{bmatrix} 2 \\ 0 \end{bmatrix}, \quad \vec{v} = \begin{bmatrix} 0 \\ 3 \end{bmatrix}
+\end{split}\]</div>
+<p>Rumus luas jajaran genjang di 2D:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Luas} = |\vec{u} \times \vec{v}| = |u_1 v_2 - u_2 v_1|
+\]</div>
+<p>Substitusi nilainya:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Luas} = |2 \cdot 3 - 0 \cdot 0| = |6 - 0| = \boxed{6}
+\]</div>
+<p>Jadi, luas jajaran genjangnya adalah 6 satuan luas.</p>
+</section>
+<section id="soal-3">
+<h1>soal 3<a class="headerlink" href="#soal-3" title="Link to this heading">#</a></h1>
+<section id="langkah-langkah">
+<h2>Langkah-langkah:<a class="headerlink" href="#langkah-langkah" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Buat dua vektor dari titik-titik sudut:</p>
+<div class="math notranslate nohighlight">
+\[
+   \vec{AB} = B - A = (1, 3, -1) - (0, 0, 0) = (1, 3, -1)
+   \]</div>
+<div class="math notranslate nohighlight">
+\[
+   \vec{AC} = C - A = (2, 1, 1) - (0, 0, 0) = (2, 1, 1)
+   \]</div>
+</li>
+<li><p>Hitung <strong>perkalian silang</strong> <span class="math notranslate nohighlight">\(\vec{AB} \times \vec{AC}\)</span>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{AB} \times \vec{AC} = 
+\begin{vmatrix}
+\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\
+1 &amp; 3 &amp; -1 \\
+2 &amp; 1 &amp; 1 \\
+\end{vmatrix}
+= \mathbf{i}(3 \cdot 1 - (-1) \cdot 1) - \mathbf{j}(1 \cdot 1 - (-1) \cdot 2) + \mathbf{k}(1 \cdot 1 - 3 \cdot 2)
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+= \mathbf{i}(3 + 1) - \mathbf{j}(1 + 2) + \mathbf{k}(1 - 6)
+= 4\mathbf{i} - 3\mathbf{j} - 5\mathbf{k}
+\]</div>
+<p>Jadi:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{AB} \times \vec{AC} = (4, -3, -5)
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p>Hitung <strong>panjang vektor hasil cross product</strong>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+|\vec{AB} \times \vec{AC}| = \sqrt{4^2 + (-3)^2 + (-5)^2} = \sqrt{16 + 9 + 25} = \sqrt{50}
+\]</div>
+<ol class="arabic simple" start="4">
+<li><p>Luas segitiga adalah setengah dari luas jajar genjang:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\text{Luas} = \frac{1}{2} |\vec{AB} \times \vec{AC}| = \frac{1}{2} \sqrt{50} = \frac{\sqrt{50}}{2} = \frac{5\sqrt{2}}{2}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="jawaban-akhir">
+<h2>Jawaban akhir:<a class="headerlink" href="#jawaban-akhir" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\boxed{\frac{5\sqrt{2}}{2}}  satuan luas.\]</div>
+</section>
+</section>
+<section id="soal-4">
+<h1>soal 4<a class="headerlink" href="#soal-4" title="Link to this heading">#</a></h1>
+<section id="id1">
+<h2>Langkah-langkah:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Hitung vektor AB dan AC:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\vec{AB} = B - A = (3 - 5, 6 - 2, 2 - (-1)) = (-2, 4, 3)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\vec{AC} = C - A = (1 - 5, 0 - 2, 4 - (-1)) = (-4, -2, 5)
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p>Hitung <strong>cross product</strong> <span class="math notranslate nohighlight">\(\vec{AB} \times \vec{AC}\)</span>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{AB} \times \vec{AC} =
+\begin{vmatrix}
+\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\
+-2 &amp; 4 &amp; 3 \\
+-4 &amp; -2 &amp; 5 \\
+\end{vmatrix}
+= \mathbf{i}(4 \cdot 5 - 3 \cdot (-2)) - \mathbf{j}(-2 \cdot 5 - 3 \cdot (-4)) + \mathbf{k}(-2 \cdot (-2) - 4 \cdot (-4))
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+= \mathbf{i}(20 + 6) - \mathbf{j}(-10 + 12) + \mathbf{k}(4 + 16)
+= \mathbf{i}(26) - \mathbf{j}(2) + \mathbf{k}(20)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Rightarrow \vec{AB} \times \vec{AC} = (26, -2, 20)
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p>Hitung <strong>panjang vektor cross product</strong>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+|\vec{AB} \times \vec{AC}| = \sqrt{26^2 + (-2)^2 + 20^2} = \sqrt{676 + 4 + 400} = \sqrt{1080}
+\]</div>
+<ol class="arabic simple" start="4">
+<li><p>Luas segitiga adalah:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\text{Luas} = \frac{1}{2} |\vec{AB} \times \vec{AC}| = \frac{1}{2} \sqrt{1080}
+= \frac{1}{2} \cdot \sqrt{36 \cdot 30} = \frac{1}{2} \cdot 6\sqrt{30} = 3\sqrt{30}
+\]</div>
+</section>
+<section id="jadi-luas-segitiga-tersebut-adalah-boxed-3-sqrt-30-satuan-luas">
+<h2>Jadi, <strong>luas segitiga tersebut adalah</strong> <span class="math notranslate nohighlight">\(\boxed{3\sqrt{30}}\)</span> satuan luas.<a class="headerlink" href="#jadi-luas-segitiga-tersebut-adalah-boxed-3-sqrt-30-satuan-luas" title="Link to this heading">#</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Dot%20Product.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Dot Product</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Cross Product</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-hasil-kali-silang">Definisi Hasil Kali Silang</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-formal">🔹 Definisi Formal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sifat-sifat-penting">🔹 Sifat-Sifat Penting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh">🔹 Contoh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-menghitung-hasil-kali-silang">Contoh Menghitung Hasil Kali Silang</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solusi">Solusi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-ortogonalitas">Verifikasi Ortogonalitas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menggunakan-determinan-untuk-menemukan-perkalian-silang">Menggunakan Determinan untuk Menemukan Perkalian Silang</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#vec-u-times-vec-v-begin-vmatrix-u-2-u-3-v-2-v-3-end-vmatrix-vec-i"><span class="math notranslate nohighlight">\(\vec{u} \times \vec{v} =\begin{vmatrix}u_2 &amp; u_3 \\v_2 &amp; v_3 \\\end{vmatrix}\vec{i}\)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#soal-1">soal 1</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jawaban">Jawaban:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#soal-2">soal 2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#soal-3">soal 3</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah">Langkah-langkah:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jawaban-akhir">Jawaban akhir:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#soal-4">soal 4</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Langkah-langkah:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jadi-luas-segitiga-tersebut-adalah-boxed-3-sqrt-30-satuan-luas">Jadi, <strong>luas segitiga tersebut adalah</strong> <span class="math notranslate nohighlight">\(\boxed{3\sqrt{30}}\)</span> satuan luas.</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Reza Fashih Hilmy Aisy
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
