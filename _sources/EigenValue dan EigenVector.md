@@ -204,9 +204,7 @@ $$
 
 Maka eigenvectornya adalah:
 
-$$
-v = \begin{bmatrix} 2 \\ 1 \end{bmatrix} \text{ (atau kelipatannya)}
-$$
+$$v = \begin{bmatrix} 2 \\ 1 \end{bmatrix} \text{ (atau kelipatannya)}$$
 
  **Langkah: Cari Eigenvector untuk λ = 2**
 
@@ -218,15 +216,8 @@ $$
 
 Sekarang kita selesaikan:
 
-$$
-(A - 2I) \cdot v = 0
-\Rightarrow
-\begin{bmatrix} 2 & 2 \\ 1 & 1 \end{bmatrix}
-\cdot
-\begin{bmatrix} x \\ y \end{bmatrix}
-=
-\begin{bmatrix} 0 \\ 0 \end{bmatrix}
-$$
+$$(A - 2I) \cdot v = 0\Rightarrow\begin{bmatrix} 2 & 2 \\ 1 & 1 \end{bmatrix}\cdot\begin{bmatrix} x \\ y \end{bmatrix}
+=\begin{bmatrix} 0 \\ 0 \end{bmatrix}$$
 
 ---
 
@@ -364,4 +355,5 @@ print(orthonormal_vectors)
 dot_product = np.dot(orthonormal_vectors[:, 0], orthonormal_vectors[:, 1])
 print("\nDot product antar vektor ortonormal:", dot_product)
 ```
-![image](https://hackmd.io/_uploads/SkFyka6Qxe.png)
+![image](https://hackmd.io/_uploads/S1qJZECQgg.png)
+
