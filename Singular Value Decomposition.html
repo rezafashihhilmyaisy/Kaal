@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; My sample book</title>
+    <title>Singular Value Decomposition &#8212; My sample book</title>
   
   
   
@@ -57,11 +57,12 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Tugas Refleksi Satu Titik';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Singular Value Decomposition';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="EigenValue dan EigenVector" href="EigenValue%20dan%20EigenVector.html" />
-    <link rel="prev" title="Refleksi Satu Titik" href="Refleksi%20Satu%20Titik.html" />
+    <link rel="prev" title="Cross Product" href="cross%20product.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -179,7 +180,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="SISTEM%20PERSAMAAN%20LINEAR.html">SISTEM PERSAMAAN LINEAR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Metode%20eliminasi%20gauss.html">Metode eliminasi gauss</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Transformasi%20Matriks.html">Transformasi Matriks</a></li>
@@ -199,7 +200,7 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="Singular%20Value%20Decomposition.html">Singular Value Decomposition</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Singular Value Decomposition</a></li>
 </ul>
 
     </div>
@@ -271,7 +272,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FTugas Refleksi Satu Titik.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FSingular Value Decomposition.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -301,7 +302,7 @@
       
       
       
-      <li><a href="_sources/Tugas Refleksi Satu Titik.md" target="_blank"
+      <li><a href="_sources/Singular Value Decomposition.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -385,7 +386,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Singular Value Decomposition</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -394,9 +395,16 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-svd">Apa itu SVD?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas-soal">Tugas Soal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-hitung-a-t-a">Langkah 1: Hitung <span class="math notranslate nohighlight">\(A^T A\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-temukan-nilai-eigen-dari-a-a">Langkah 2: Temukan nilai eigen dari <span class="math notranslate nohighlight">\(A A\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-nilai-singular-sigma-i-sqrt-lambda-i">Langkah 3: Nilai Singular <span class="math notranslate nohighlight">\(\sigma_i = \sqrt{\lambda_i}\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-hitung-v-eigenvektor-dari-a-t-a">Langkah 4: Hitung V (eigenvektor dari <span class="math notranslate nohighlight">\(A^T A\)</span>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-5-hitung-u-a-v-sigma-1">Langkah 5: Hitung <span class="math notranslate nohighlight">\(U = A V \Sigma^{-1}\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-final-svd">✅ Hasil Final SVD:</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -407,91 +415,171 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>Tugas Refleksi Satu Titik</p>
-<div class="highlight-import notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
-
-def reflect_x_equals_a(point, a):
-    &quot;&quot;&quot;Refleksi terhadap garis x = a&quot;&quot;&quot;
-    x, y = point
-    return (2 * a - x, y)
-
-def reflect_y_equals_b(point, b):
-    &quot;&quot;&quot;Refleksi terhadap garis y = b&quot;&quot;&quot;
-    x, y = point
-    return (x, 2 * b - y)
-
-def reflect_y_equals_x(point):
-    &quot;&quot;&quot;Refleksi terhadap garis y = x&quot;&quot;&quot;
-    x, y = point
-    return (y, x)
-
-# Titik awal
-point = (3, 4)
-
-# Menerapkan refleksi terhadap berbagai garis
-point_x_reflected = reflect_x_equals_a(point, 2)
-point_y_reflected = reflect_y_equals_b(point, 2)
-point_xy_reflected = reflect_y_equals_x(point)
-
-# Visualisasi
-fig, ax = plt.subplots(figsize=(6, 6))
-ax.set_xlim(0, 5)
-ax.set_ylim(0, 5)
-ax.axvline(2, color=&#39;gray&#39;, linestyle=&#39;--&#39;, label=&quot;x = 2&quot;)
-ax.axhline(2, color=&#39;gray&#39;, linestyle=&#39;--&#39;, label=&quot;y = 2&quot;)
-ax.plot([0, 5], [0, 5], color=&#39;gray&#39;, linestyle=&#39;--&#39;, label=&quot;y = x&quot;)
-
-# Plot titik
-ax.scatter(*point, color=&#39;blue&#39;, label=&quot;Titik Awal&quot;)
-ax.scatter(*point_x_reflected, color=&#39;red&#39;, label=&quot;Refleksi x = 2&quot;)
-ax.scatter(*point_y_reflected, color=&#39;green&#39;, label=&quot;Refleksi y = 2&quot;)
-ax.scatter(*point_xy_reflected, color=&#39;purple&#39;, label=&quot;Refleksi y = x&quot;)
-
-ax.legend()
-ax.set_title(&quot;Transformasi Refleksi dari Titik&quot;)
-ax.set_xlabel(&quot;X&quot;)
-ax.set_ylabel(&quot;Y&quot;)
-plt.grid()
-plt.show()
-</pre></div>
-</div>
-<p><img alt="image" src="https://hackmd.io/_uploads/HymqCkPxee.png" /></p>
-<p>Grafik yang dihasilkan dari kode Python menunjukkan bagaimana satu titik direfleksikan terhadap tiga garis: ( x = 2 ), ( y = 2 ), dan ( y = x ).
-Elemen pada Grafik</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="singular-value-decomposition">
+<h1>Singular Value Decomposition<a class="headerlink" href="#singular-value-decomposition" title="Link to this heading">#</a></h1>
+<section id="apa-itu-svd">
+<h2>Apa itu SVD?<a class="headerlink" href="#apa-itu-svd" title="Link to this heading">#</a></h2>
+<p>Singular Value Decomposition (SVD) adalah teknik faktorisasi matriks yang sangat berguna dalam analisis data dan pengolahan sinyal. SVD memecah matriks menjadi tiga matriks yang lebih sederhana: <strong>U</strong>, <strong>Σ</strong>, dan <strong>V</strong> sehingga ( A = U \Sigma V^T ).</p>
 <ul class="simple">
-<li><p>Titik Awal (Biru): Ini adalah titik yang akan direfleksikan, dengan koordinat (3,4).</p></li>
-<li><p>Garis Refleksi (Putus-Putus):</p></li>
-<li><p>( x = 2 ) (Garis vertikal berwarna abu-abu).</p></li>
-<li><p>( y = 2 ) (Garis horizontal berwarna abu-abu).</p></li>
-<li><p>( y = x ) (Garis diagonal berwarna abu-abu).</p></li>
-<li><p>Titik Refleksi:</p></li>
-<li><p>Refleksi terhadap ( x = 2 ) → (Merah) (1,4).</p></li>
-<li><p>Refleksi terhadap ( y = 2 ) → (Hijau) (3,0).</p></li>
-<li><p>Refleksi terhadap ( y = x ) → (Ungu) (4,3).
-Cara Interpretasi</p></li>
-<li><p>Refleksi terhadap ( x = 2 ):</p></li>
-<li><p>Koordinat x berubah sesuai rumus ( x’ = 2a - x ), sehingga dari (3,4) menjadi (1,4).</p></li>
-<li><p>Y tetap sama karena refleksi terhadap garis vertikal tidak mempengaruhi koordinat y.</p></li>
-<li><p>Refleksi terhadap ( y = 2 ):</p></li>
-<li><p>Koordinat y berubah dengan rumus ( y’ = 2b - y ), sehingga dari (3,4) menjadi (3,0).</p></li>
-<li><p>X tetap sama karena refleksi terhadap garis horizontal tidak mempengaruhi koordinat x.</p></li>
-<li><p>Refleksi terhadap ( y = x ):</p></li>
-<li><p>Koordinat ( (x,y) ) ditukar, sehingga dari (3,4) menjadi (4,3).
-Kesimpulan
-Grafik ini memperlihatkan bagaimana refleksi titik berfungsi dalam geometri koordinat. Dengan melihat titik awal dan hasil refleksi, kita bisa memahami bagaimana setiap refleksi mempengaruhi koordinat. Jika ingin bereksperimen dengan titik lain, cukup ubah nilai titik awal di kode Python.
-Semoga penjelasannya jelas! Jika ingin tambahan visualisasi atau ada pertanyaan lebih lanjut, beri tahu saya.</p></li>
+<li><p><strong>U</strong> adalah matriks ortogonal yang berisi vektor singular kiri.</p></li>
+<li><p><strong>Σ</strong> adalah matriks diagonal yang berisi nilai singular.</p></li>
+<li><p><strong>V</strong> adalah matriks ortogonal yang berisi vektor singular kanan.</p></li>
 </ul>
-<p>Cara Interpretasi</p>
+<p>SVD sering digunakan dalam berbagai bidang seperti statistik, pembelajaran mesin, pemrosesan gambar, dan sistem rekomendasi.</p>
+<p>Rumus dasar dari <strong>Singular Value Decomposition (SVD)</strong> adalah:</p>
+<p><span class="math notranslate nohighlight">\([A = U \Sigma V^T]\)</span></p>
+<p>di mana:</p>
 <ul class="simple">
-<li><p>Refleksi terhadap ( x = 2 ):</p></li>
-<li><p>Koordinat x berubah sesuai rumus ( x’ = 2a - x ), sehingga dari (3,4) menjadi (1,4).</p></li>
-<li><p>Y tetap sama karena refleksi terhadap garis vertikal tidak mempengaruhi koordinat y.</p></li>
-<li><p>Refleksi terhadap ( y = 2 ):</p></li>
-<li><p>Koordinat y berubah dengan rumus ( y’ = 2b - y ), sehingga dari (3,4) menjadi (3,0).</p></li>
-<li><p>X tetap sama karena refleksi terhadap garis horizontal tidak mempengaruhi koordinat x.</p></li>
-<li><p>Refleksi terhadap ( y = x ):</p></li>
-<li><p>Koordinat ( (x,y) ) ditukar, sehingga dari (3,4) menjadi (4,3).</p></li>
+<li><p>( A ) adalah matriks asal dengan ukuran ( m \times n ).</p></li>
+<li><p>( U ) adalah matriks ortogonal dengan ukuran ( m \times m ) yang berisi vektor singular kiri.</p></li>
+<li><p>( \Sigma ) adalah matriks diagonal dengan ukuran ( m \times n ) yang berisi nilai singular.</p></li>
+<li><p>( V ) adalah matriks ortogonal dengan ukuran ( n \times n ) yang berisi vektor singular kanan.</p></li>
+<li><p>( V^T ) adalah transpos dari matriks ( V ).</p></li>
 </ul>
+<p>Setiap nilai singular dalam ( \Sigma ) memberikan informasi tentang kontribusi dimensi terhadap struktur data, yang berguna dalam reduksi dimensi dan kompresi data.</p>
+<p>Berikut adalah langkah-langkah menghitung <strong>Singular Value Decomposition (SVD)</strong> untuk matriks ( A ):</p>
+<ol class="arabic simple">
+<li><p><strong>Hitung Matriks ( A^T A )</strong></p>
+<ul class="simple">
+<li><p>Transpos matriks ( A ) dan kalikan dengan dirinya sendiri: ( A^T A ).</p></li>
+<li><p>Temukan nilai eigen dan vektor eigen dari ( A^T A ). Vektor eigen ini akan menjadi kolom-kolom matriks <strong>V</strong>.</p></li>
+</ul>
+</li>
+<li><p><strong>Hitung Matriks ( A A^T )</strong></p>
+<ul class="simple">
+<li><p>Kalikan matriks ( A ) dengan transposnya: ( A A^T ).</p></li>
+<li><p>Temukan nilai eigen dan vektor eigen dari ( A A^T ). Vektor eigen ini akan menjadi kolom-kolom matriks <strong>U</strong>.</p></li>
+</ul>
+</li>
+<li><p><strong>Hitung Nilai Singular</strong></p>
+<ul class="simple">
+<li><p>Nilai singular adalah akar kuadrat dari nilai eigen yang diperoleh dari langkah sebelumnya.</p></li>
+<li><p>Susun nilai singular dalam matriks diagonal <strong>Σ</strong>.</p></li>
+</ul>
+</li>
+<li><p><strong>Susun Matriks SVD</strong></p>
+<ul class="simple">
+<li><p>Matriks <strong>U</strong> berisi vektor eigen dari ( A A^T ).</p></li>
+<li><p>Matriks <strong>Σ</strong> berisi nilai singular dalam bentuk diagonal.</p></li>
+<li><p>Matriks <strong>V</strong> berisi vektor eigen dari ( A^T A ).</p></li>
+</ul>
+</li>
+</ol>
+<p>Sehingga diperoleh <strong>faktorisasi SVD</strong>:
+<span class="math notranslate nohighlight">\([A = U \Sigma\)</span>  V^T ]</p>
+<p>menghitung eigenvalue eigenvector, bisaa melakukan matriks transformasi,menghitung svd</p>
+</section>
+<section id="tugas-soal">
+<h2>Tugas Soal<a class="headerlink" href="#tugas-soal" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split} A = \begin{bmatrix}
+3 &amp; 1 \\ 1 &amp; 3\end{bmatrix}\end{split}\]</div>
+</section>
+<section id="langkah-1-hitung-a-t-a">
+<h2>Langkah 1: Hitung <span class="math notranslate nohighlight">\(A^T A\)</span><a class="headerlink" href="#langkah-1-hitung-a-t-a" title="Link to this heading">#</a></h2>
+<p>Karena <span class="math notranslate nohighlight">\(A\)</span> simetris, <span class="math notranslate nohighlight">\(A^T A = A A\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} A A = \begin{bmatrix}
+3 &amp; 1 \\
+1 &amp; 3
+\end{bmatrix}
+\begin{bmatrix}
+3 &amp; 1 \\
+1 &amp; 3
+\end{bmatrix}=\begin{bmatrix}9 + 1 &amp; 3 + 3 \\3 + 3 &amp; 1 + 9\end{bmatrix}=\begin{bmatrix}10 &amp; 6 \\6 &amp; 10\end{bmatrix}\end{split}\]</div>
+</section>
+<section id="langkah-2-temukan-nilai-eigen-dari-a-a">
+<h2>Langkah 2: Temukan nilai eigen dari <span class="math notranslate nohighlight">\(A A\)</span><a class="headerlink" href="#langkah-2-temukan-nilai-eigen-dari-a-a" title="Link to this heading">#</a></h2>
+<p>Karakteristik:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\chi(\lambda) = \begin{vmatrix}
+10-\lambda &amp; 6 \\
+6 &amp; 10-\lambda
+\end{vmatrix}
+= (10-\lambda)^2 - 36 = \lambda^2 - 20\lambda + 100 - 36 = \lambda^2 - 20\lambda + 64
+\end{split}\]</div>
+<p>Akar:</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda = \frac{20 \pm \sqrt{20^2 - 4 \times 64}}{2}
+           = \frac{20 \pm \sqrt{400-256}}{2}
+           = \frac{20 \pm \sqrt{144}}{2}
+           = \frac{20 \pm 12}{2}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\lambda_1 = \frac{32}{2} = 16, \qquad \lambda_2 = \frac{8}{2} = 4
+\]</div>
+</section>
+<section id="langkah-3-nilai-singular-sigma-i-sqrt-lambda-i">
+<h2>Langkah 3: Nilai Singular <span class="math notranslate nohighlight">\(\sigma_i = \sqrt{\lambda_i}\)</span><a class="headerlink" href="#langkah-3-nilai-singular-sigma-i-sqrt-lambda-i" title="Link to this heading">#</a></h2>
+<p><span class="math notranslate nohighlight">\(\sigma_1 = \sqrt{16} = 4, \qquad \sigma_2 = \sqrt{4} = 2\)</span></p>
+</section>
+<section id="langkah-4-hitung-v-eigenvektor-dari-a-t-a">
+<h2>Langkah 4: Hitung V (eigenvektor dari <span class="math notranslate nohighlight">\(A^T A\)</span>)<a class="headerlink" href="#langkah-4-hitung-v-eigenvektor-dari-a-t-a" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Untuk <span class="math notranslate nohighlight">\(\lambda_1 = 16\)</span>: <span class="math notranslate nohighlight">\((A A - 16 I)x = 0\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+-6 &amp; 6 \\
+6 &amp; -6
+\end{bmatrix}
+\Rightarrow x_1 = [1, 1]^T
+\Rightarrow v_1 = \frac{1}{\sqrt{2}}\begin{bmatrix}1 \\ 1\end{bmatrix}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>Untuk <span class="math notranslate nohighlight">\(\lambda_2 = 4\)</span>: <span class="math notranslate nohighlight">\((A A - 4 I)x = 0\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+6 &amp; 6 \\
+6 &amp; 6
+\end{bmatrix}
+\Rightarrow x_2 = [1, -1]^T
+\Rightarrow v_2 = \frac{1}{\sqrt{2}}\begin{bmatrix}1 \\ -1\end{bmatrix}\end{split}\]</div>
+<p>Sehingga:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+V = \begin{bmatrix}
+1/\sqrt{2} &amp; 1/\sqrt{2} \\
+1/\sqrt{2} &amp; -1/\sqrt{2}
+\end{bmatrix}
+\end{split}\]</div>
+</section>
+<section id="langkah-5-hitung-u-a-v-sigma-1">
+<h2>Langkah 5: Hitung <span class="math notranslate nohighlight">\(U = A V \Sigma^{-1}\)</span><a class="headerlink" href="#langkah-5-hitung-u-a-v-sigma-1" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}A v_1 = \begin{bmatrix}3 &amp; 1 \\1 &amp; 3\end{bmatrix}
+\frac{1}{\sqrt{2}}\begin{bmatrix}1 \\1\end{bmatrix}=\frac{1}{\sqrt{2}}\begin{bmatrix}3+1 \\1+3\end{bmatrix}=\frac{1}{\sqrt{2}}\begin{bmatrix}4 \\4\end{bmatrix}
+=\begin{bmatrix}\frac{4}{\sqrt{2}} \\\frac{4}{\sqrt{2}}\end{bmatrix}\Rightarrow u_1 = \frac{1}{4}\begin{bmatrix}\frac{4}{\sqrt{2}} \\\frac{4}{\sqrt{2}}\end{bmatrix}=\frac{1}{\sqrt{2}}\begin{bmatrix}1 \\1\end{bmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}A v_2 = \begin{bmatrix}3 &amp; 1 \\1 &amp; 3\end{bmatrix}\frac{1}{\sqrt{2}}\begin{bmatrix}1 \\-1\end{bmatrix}=\frac{1}{\sqrt{2}}\begin{bmatrix}3-1 \\1-3\end{bmatrix}=\frac{1}{\sqrt{2}}\begin{bmatrix}2 \\-2\end{bmatrix}=\begin{bmatrix}\frac{2}{\sqrt{2}} \\-\frac{2}{\sqrt{2}}\end{bmatrix}\Rightarrow u_2 = \frac{1}{2}\begin{bmatrix}\frac{2}{\sqrt{2}} \\-\frac{2}{\sqrt{2}}\end{bmatrix}=\frac{1}{\sqrt{2}}\begin{bmatrix}1 \\-1\end{bmatrix}\end{split}\]</div>
+</section>
+<section id="hasil-final-svd">
+<h2>✅ Hasil Final SVD:<a class="headerlink" href="#hasil-final-svd" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+A = U \Sigma V^T
+\]</div>
+<p>dengan:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(U = \begin{bmatrix}
+1/\sqrt{2} &amp; 1/\sqrt{2} \\
+1/\sqrt{2} &amp; -1/\sqrt{2}
+\end{bmatrix}, \Sigma = \begin{bmatrix}
+4 &amp; 0 \\
+0 &amp; 2
+\end{bmatrix}, V = \begin{bmatrix}
+1/\sqrt{2} &amp; 1/\sqrt{2} \\
+1/\sqrt{2} &amp; -1/\sqrt{2}
+\end{bmatrix}\)</span></p></li>
+</ul>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -524,22 +612,13 @@ Semoga penjelasannya jelas! Jika ingin tambahan visualisasi atau ada pertanyaan 
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Refleksi%20Satu%20Titik.html"
+       href="cross%20product.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Refleksi Satu Titik</p>
+        <p class="prev-next-title">Cross Product</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="EigenValue%20dan%20EigenVector.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">EigenValue dan EigenVector</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -556,9 +635,16 @@ Semoga penjelasannya jelas! Jika ingin tambahan visualisasi atau ada pertanyaan 
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-svd">Apa itu SVD?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas-soal">Tugas Soal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-hitung-a-t-a">Langkah 1: Hitung <span class="math notranslate nohighlight">\(A^T A\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-temukan-nilai-eigen-dari-a-a">Langkah 2: Temukan nilai eigen dari <span class="math notranslate nohighlight">\(A A\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-nilai-singular-sigma-i-sqrt-lambda-i">Langkah 3: Nilai Singular <span class="math notranslate nohighlight">\(\sigma_i = \sqrt{\lambda_i}\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-hitung-v-eigenvektor-dari-a-t-a">Langkah 4: Hitung V (eigenvektor dari <span class="math notranslate nohighlight">\(A^T A\)</span>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-5-hitung-u-a-v-sigma-1">Langkah 5: Hitung <span class="math notranslate nohighlight">\(U = A V \Sigma^{-1}\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-final-svd">✅ Hasil Final SVD:</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
