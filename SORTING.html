@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengantar Pengurutan (Sorting)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 3px solid #34495e;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        h2 {
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+            margin-top: 20px;
+        }
+        h3 {
+            color: #16a085;
+        }
+        .markdown-cell {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .code-cell {
+            margin-bottom: 25px;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .code-input {
+            background-color: #f6f8fa;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            white-space: pre;
+            overflow-x: auto;
+            color: #24292e;
+        }
+        blockquote {
+            margin: 15px 0;
+            padding: 10px 20px;
+            background-color: #fdfefe;
+            border-left: 5px solid #2ecc71;
+            color: #555;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        code {
+            background-color: #f0f2f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.95em;
+            color: #d63384;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="markdown-cell">
+        <h1>Pengantar Pengurutan (Sorting)</h1>
+        <ul>
+            <li>Data tidak hanya sekadar diinput, tetapi juga butuh diolah sehingga dapat diambil suatu analisa.</li>
+            <li>Proses pengurutan merupakan salah satu proses yang sangat penting dalam pengolahan data.</li>
+            <li><span class="highlight">Contoh Kasus:</span> Pengurutan data mahasiswa berdasarkan nilai atau penghasilan orang tua untuk membantu pengambilan keputusan secara tepat mengenai siapa yang berhak menerima beasiswa.</li>
+            <li>Secara umum, proses pengurutan data dilakukan dengan membandingkan nilai antara data yang satu dengan data yang lain.</li>
+        </ul>
+
+        <h1>BUBBLE SORTING</h1>
+        <h2>Algoritma Bubble Sort</h2>
+        <ul>
+            <li><span class="highlight">Karakteristik:</span> Bubble Sort dikenal sebagai algoritma pengurutan yang membutuhkan waktu paling lama, tetapi algoritma ini adalah yang paling sederhana.</li>
+            <li>Alasan penamaan "bubble" (gelembung) karena di setiap akhir iterasi, data terbesar akan bergerak bergeser ke posisi paling kanan (atas) seperti halnya gelembung udara di dalam air.</li>
+        </ul>
+
+        <h2>Cara Kerja Pengurutan (Ascending)</h2>
+        <p>Cara kerja Bubble Sort untuk mengurutkan data dari kecil ke besar adalah sebagai berikut:</p>
+        <ol>
+            <li>Data dibaca mulai dari paling kiri atau dari indeks ke-0.</li>
+            <li>Bandingkan dua buah data yang saling berdekatan (antara data ke-<i>i</i> dan data ke-<i>i+1</i>).</li>
+            <li>Jika data ke-<i>i</i> lebih besar daripada data ke-<i>i+1</i>, lakukan pertukaran posisi (swap).</li>
+            <li>Pindah satu posisi ke kanan, lalu ulangi proses perbandingan dan pertukaran tersebut.</li>
+            <li>Langkah ini dilakukan terus-menerus sampai ke indeks data terakhir. Setelah satu putaran penuh selesai, data terbesar otomatis akan menempati posisi paling kanan (indeks ke-<i>N</i>).</li>
+            <li>Ulangi kembali langkah-langkah di atas dari indeks ke-0, namun batas akhirnya berkurang menjadi indeks ke-<i>N-1</i>, <i>N-2</i>, ..., hingga data terurut sempurna.</li>
+        </ol>
+
+        <p><span class="highlight">Ilustrasi Perubahan tiap Iterasi:</span> Misalkan terdapat data awal: <code>[7, 2.5, 5, 10, 1]</code>.</p>
+        <ul>
+            <li><strong>Iterasi Pertama:</strong> Bertujuan memindahkan data terbesar (10) ke posisi terakhir atau paling kanan dari list. Hasil akhir iterasi 1: <code>[2.5, 5, 7, 1, 10]</code>.</li>
+            <li><strong>Iterasi Kedua:</strong> Bertujuan memindahkan data terbesar kedua (7) agar menempati posisi tepat sebelum data 10. Hasil akhir iterasi 2: <code>[2.5, 5, 1, 7, 10]</code>.</li>
+            <li><strong>Iterasi Ketiga:</strong> Bertujuan memindahkan data terbesar ketiga (5) untuk menempati posisi tepat sebelum data 7. Hasil akhir iterasi 3: <code>[2.5, 1, 5, 7, 10]</code>.</li>
+            <li><strong>Hasil Akhir Terurut:</strong> Proses diulangi hingga seluruh elemen berada di posisi yang tepat: <code>[1, 2.5, 5, 7, 10]</code>.</li>
+        </ul>
+
+        <hr style="border: 0; border-top: 1px solid #e1e4e8; margin: 20px 0;">
+        <h2>KODE PROGRAM (SOURCE CODE)</h2>
+        <h3>1. Fungsi Utama Bubble Sort</h3>
+        <p>Berikut adalah implementasi standar algoritma Bubble Sort di Python menggunakan dua lapis perulangan (nested loop):</p>
+    </div>
+
+    <div class="code-cell">
+        <div class="code-input">def bubbleSort(listData):
+    print('Data yang akan diurutkan:', listData)
+    count = 0
+
+    # Outer loop bergerak mundur untuk menentukan batas kanan pemeriksaan data
+    for outIter in range(len(listData) - 1, -1, -1):
+        print('outIter =', outIter)
+        count = count + 1
+        print('Iterasi ke-', count, ':')
+
+        # Inner loop untuk membandingkan elemen yang bersebelahan
+        for i in range(outIter):
+            if listData[i] > listData[i+1]:
+                # Proses pertukaran posisi (Swap)
+                temp = listData[i]
+                listData[i] = listData[i+1]
+                listData[i+1] = temp
+
+                # Cara alternatif python untuk swap:
+                # listData[i], listData[i+1] = listData[i+1], listData[i]
+
+        print(outIter, '=', listData)
+
+    print('Data urut -', listData)</div>
+    </div>
+
+    <div class="markdown-cell">
+        <h1>SELECTION SORT</h1>
+        <h2>1. Karakteristik Selection Sort</h2>
+        <ul>
+            <li>Algoritma Selection Sort memiliki waktu komputasi yang lebih cepat dibandingkan dengan algoritma Bubble Sort.</li>
+            <li>Hal ini dikarenakan terjadi reduksi waktu pada saat proses pertukaran data.</li>
+            <li><span class="highlight">Perbedaannya dengan Bubble Sort:</span> Pada Bubble Sort, setiap dua data yang berdekatan akan langsung dibandingkan dan ditukar jika memenuhi syarat pada setiap tahapan iterasi.</li>
+            <li>Pada Selection Sort, kedua proses tersebut tidak dilakukan secara bersamaan. Algoritma ini akan mencari data yang memenuhi syarat terlebih dahulu melalui seluruh proses perbandingan, kemudian data yang terpilih tersebut langsung diletakkan pada indeks yang tepat. Oleh karena itu, algoritma ini dinamakan <em>selection</em> atau pemilihan data.</li>
+        </ul>
+
+        <h2>2. Cara Kerja Pengurutan (Ascending Order)</h2>
+        <p>Tahapan pengurutan dari nilai terkecil ke terbesar adalah sebagai berikut:</p>
+        <ol>
+            <li>Proses pemindaian data dimulai dari indeks awal sampai dengan indeks akhir data.</li>
+            <li>Cari data dengan nilai paling minimal di antara rentang tersebut melalui proses perbandingan. Pada saat pencarian nilai terkecil ini, tidak ada proses pertukaran posisi sama sekali.</li>
+            <li>Setelah data paling minimal ditemukan, tukar posisinya dengan data yang berada di indeks awal.</li>
+            <li>Ulangi kembali proses pencarian data paling minimal untuk rentang berikutnya (dari indeks awal + 1 sampai indeks akhir), karena indeks awal sudah terisi oleh data yang tepat.</li>
+            <li>Letakkan data minimal yang baru ditemukan tersebut pada indeks awal + 1.</li>
+            <li>Proses ini diulangi terus-menerus untuk indeks awal + 2, indeks awal + 3, dan seterusnya hingga data terakhir terurut sempurna.</li>
+        </ol>
+
+        <p><span class="highlight">Ilustrasi Perubahan tiap Iterasi:</span> Misalkan terdapat data awal: <code>[7, 2.5, 5, 10, 1]</code>.</p>
+        <ul>
+            <li><strong>Iterasi Pertama:</strong> Mencari nilai terkecil dari indeks 0 sampai 4. Nilai terkecil yang ditemukan adalah 1. Nilai 1 ini kemudian ditukar dengan data pada indeks ke-0 (7). Hasil akhir iterasi 1: <code>[1, 2.5, 5, 10, 7]</code>.</li>
+            <li><strong>Iterasi Kedua:</strong> Mencari nilai terkecil dari indeks 1 sampai 4 (indeks 0 diabaikan). Nilai terkecil yang ditemukan adalah 2.5. Karena 2.5 sudah berada di indeks ke-1, ia ditukar dengan dirinya sendiri. Hasil akhir iterasi 2: <code>[1, 2.5, 5, 10, 7]</code>.</li>
+            <li><strong>Iterasi Ketiga:</strong> Mencari nilai terkecil dari indeks 2 sampai 4. Nilai terkecil yang ditemukan adalah 5. Nilai 5 ditukar dengan data pada indeks ke-2. Hasil akhir iterasi 3: <code>[1, 2.5, 5, 10, 7]</code>.</li>
+            <li><strong>Iterasi Berikutnya:</strong> Proses berlanjut hingga pengecekan data terakhir selesai dilakukan dan menghasilkan list yang terurut penuh: <code>[1, 2.5, 5, 7, 10]</code>.</li>
+        </ul>
+
+        <hr style="border: 0; border-top: 1px solid #e1e4e8; margin: 20px 0;">
+        <h2>BAGIAN 2: KODE PROGRAM (SOURCE CODE)</h2>
+        <h3>1. Fungsi Utama Selection Sort</h3>
+        <p>Struktur algoritma ini terdiri dari dua buah perulangan (nested loop). Iterasi luar (outer loop) digunakan untuk menempatkan data hasil pertukaran pada indeks awal yang tepat. Sementara iterasi dalam (inner loop) digunakan khusus untuk mencari nilai minimal.</p>
+    </div>
+
+    <div class="code-cell">
+        <div class="code-input">def selectionSort(listData):
+    print('Algoritma Selection Sort konvensional')
+    print('Data Awal =', listData)
+
+    # Outer loop menentukan posisi indeks awal yang akan diisi
+    for outIter in range(len(listData) - 1):
+        minIndex = outIter
+
+        # Inner loop mencari indeks dengan nilai minimum
+        for i in range(outIter + 1, len(listData)):
+            if listData[i] < listData[minIndex]:
+                minIndex = i
+
+        # Proses pertukaran data setelah nilai minimum ditemukan
+        temp = listData[outIter]
+        listData[outIter] = listData[minIndex]
+        listData[minIndex] = temp
+
+        print('Iterasi ke-', outIter + 1, ':', listData)
+
+    print('Data Urut =', listData)</div>
+    </div>
+
+    <div class="markdown-cell">
+        <h1>INSERTION SORT</h1>
+        <h3>1. Konsep Dasar Insertion Sort</h3>
+        <ul>
+            <li>Algoritma Insertion Sort bekerja dengan mengasumsikan bahwa sebagian data di sisi kiri dari list sudah berada dalam keadaan terurut.</li>
+            <li>Data berikutnya (data baru yang belum terurut) diambil sebagai nilai acuan yang disebut <strong>key</strong>. Nilai <em>key</em> ini akan dibandingkan satu per satu dengan kelompok data yang sudah terurut di sebelah kirinya.</li>
+            <li>Setelah menemukan posisi yang tepat, data <em>key</em> tersebut akan disisipkan (<em>insertion</em>) ke dalam bagian data yang terurut tersebut.</li>
+            <li>Dengan konsep ini, elemen di sisi kiri list data selalu dipastikan berada dalam kondisi terurut sebelum data baru berikutnya diproses.</li>
+        </ul>
+
+        <h3>2. Tahapan Algoritma Insertion Sort (Ascending)</h3>
+        <p>Prosedur pengurutan nilai dari kecil ke besar adalah sebagai berikut:</p>
+        <ol>
+            <li>Elemen pertama (indeks ke-0) diasumsikan sebagai bagian data awal yang sudah dalam keadaan terurut.</li>
+            <li>Ambil data berikutnya sebagai nilai <em>key</em>.</li>
+            <li>Lakukan perbandingan nilai antara <em>key</em> dengan data pada indeks-indeks sebelumnya. Jika nilai data sebelumnya lebih besar daripada nilai <em>key</em>, lakukan pergeseran posisi data ke kanan untuk memberikan ruang kosong bagi <em>key</em>.</li>
+            <li>Proses perbandingan dan pergeseran ini dilakukan terus-menerus ke arah kiri sampai ditemukan data yang tidak lebih besar lagi dari <em>key</em>, atau hingga mencapai elemen posisi pertama (indeks ke-0).</li>
+            <li>Sisipkan data <em>key</em> pada posisi kosong yang tepat tersebut.</li>
+            <li>Ulangi langkah di atas untuk elemen-elemen selanjutnya hingga seluruh list terurut penuh.</li>
+        </ol>
+
+        <blockquote>
+            <p><strong>Ilustrasi Perubahan tiap Iterasi:</strong><br>
+            Misalkan terdapat data awal: <code>[7, 2.5, 5, 10, 1]</code>.</p>
+            <ul>
+                <li><strong>Iterasi Pertama:</strong> Indeks ke-0 (<code>7</code>) dianggap terurut. Data indeks ke-1 (<code>2.5</code>) menjadi <em>key</em>. Karena <code>2.5 &lt; 7</code>, posisi <code>7</code> digeser, lalu <code>2.5</code> disisipkan di depan. List menjadi: <code>[2.5, 7, 5, 10, 1]</code>.</li>
+                <li><strong>Iterasi Kedua:</strong> Elemen indeks ke-2 (<code>5</code>) menjadi <em>key</em>. Karakteristik <em>key</em> dibandingkan dengan subset terurut <code>[2.5, 7]</code>. Karena <code>5 &lt; 7</code> dan <code>5 &gt; 2.5</code>, maka <code>5</code> disisipkan di antara keduanya. List menjadi: <code>[2.5, 5, 7, 10, 1]</code>.</li>
+                <li><strong>Iterasi Ketiga:</strong> Elemen indeks ke-3 (<code>10</code>) menjadi <em>key</em>. Karena <code>10 &gt; 7</code> (elemen terakhir pada subset terurut), tidak ada pergeseran data yang terjadi. List tetap: <code>[2.5, 5, 7, 10, 1]</code>.</li>
+                <li><strong>Iterasi Keempat:</strong> Elemen indeks ke-4 (<code>1</code>) menjadi <em>key</em>. Perbandingan dilakukan sebanyak empat kali ke arah kiri. Angka <code>1</code> harus disisipkan sebelum nilai <code>2.5</code>. List akhir terurut penuh menjadi: <code>[1, 2.5, 5, 7, 10]</code>.</li>
+            </ul>
+        </blockquote>
+
+        <hr style="border: 0; border-top: 1px solid #e1e4e8; margin: 20px 0;">
+        <h2>BAGIAN 2: KODE PROGRAM (SOURCE CODE)</h2>
+        <h3>1. Fungsi Utama Insertion Sort</h3>
+        <p>Struktur algoritma ini menggunakan perulangan <code>for</code> sebagai iterasi luar (<em>outer loop</em>) untuk berjalan dari indeks ke-1 hingga akhir list. Sementara iterasi dalam (<em>inner loop</em>) menggunakan perulangan <code>while</code> karena proses perbandingan akan langsung berhenti apabila nilai <em>key</em> ternyata sudah lebih besar dari data pembanding di kirinya.</p>
+
+<div class="code-cell" style="box-shadow: none; margin-top: 15px;">
+<div class="code-input" style="border-bottom: none;">def insertionSort(listData):
+    # Outer loop menentukan elemen yang menjadi key dimulai dari indeks 1
+    for outIter in range(1, len(listData)):
+        print(listData)
+        key = listData[outIter]
+        ind = outIter
+        
+        # Inner loop menggeser data ke kanan selama kondisi terpenuhi
+        while ind > 0 and listData[ind-1] > key:
+            listData[ind] = listData[ind-1]
+            ind = ind - 1
+            print('inner =', listData)
+            
+        # Menempatkan key pada posisi yang tepat
+        listData[ind] = key
+        print('sortedData =', listData)</div>
+</div>
+
+        <h3>2. Contoh Pengujian Eksekusi Kode</h3>
+        <p>Berikut contoh pendefinisian array dan pemanggilan fungsi di dalam sistem Python:</p>
+
+<div class="code-cell" style="box-shadow: none; margin-top: 15px;">
+<div class="code-input" style="border-bottom: none;"># Contoh Pengujian 1
+a = [10, 2, 5, 8, 1, 20, 2, 2, 4]
+insertionSort(a)
+
+# Contoh Pengujian 2 (Data sudah dalam keadaan terurut)
+b = [3, 5, 9, 12, 14, 15, 19]
+insertionSort(b)</div>
+</div>
+    </div>
+
+</body>
+</html>
