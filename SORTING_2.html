@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struktur Data: Advanced Sorting Algorithms</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 3px solid #34495e;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        h2 {
+            border-left: 4px solid #2980b9;
+            padding-left: 10px;
+            margin-top: 25px;
+        }
+        h3 {
+            color: #16a085;
+            margin-top: 20px;
+        }
+        .markdown-cell {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .code-cell {
+            margin-bottom: 25px;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .code-input {
+            background-color: #f6f8fa;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            white-space: pre;
+            overflow-x: auto;
+            color: #24292e;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        code {
+            background-color: #f0f2f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.95em;
+            color: #d63384;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .diagram-container {
+            text-align: center;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="markdown-cell">
+        <h1>ALGORITMA PENGURUTAN LANJUTAN</h1>
+        
+        <h2>1. Merge Sort</h2>
+        <p><strong>Konsep Dasar:</strong> Permasalahan pengurutan akan jauh lebih mudah dilaksanakan jika hanya terdapat satu elemen saja di dalam list data, karena data tunggal otomatis sudah berada dalam keadaan terurut. Merge Sort memanfaatkan konsep rekursif ini dan dibagi menjadi dua tahapan utama:</p>
+        <ol>
+            <li><strong>Splitting / Divide (Top-Down Process):</strong> Proses membagi list data menjadi dua buah bagian (kiri dan kanan) secara terus-menerus hingga hanya tersisa satu elemen tunggal di setiap sub-list.</li>
+            <li><strong>Merging (Bottom-Up Process):</strong> Proses menggabungkan kembali sub-list yang telah terpecah. Proses ini melibatkan pembandingan elemen; jika suatu data lebih kecil, ia diletakkan pada indeks yang lebih rendah sehingga hasil penggabungannya otomatis terurut.</li>
+        </ol>
+        
+        <div class="diagram-container">
+            
+        </div>
+
+        <h2>2. Quick Sort</h2>
+        <p><strong>Konsep Dasar:</strong> Memiliki kesamaan prinsip kerja dengan Merge Sort, yaitu menggunakan proses <em>divide</em> (pembagian) dan <em>combine</em> (penggabungan). Namun, terdapat perbedaan mendasar pada syarat pembagiannya.</p>
+        <p><strong>Tahapan Kerja:</strong></p>
+        <ol>
+            <li><strong>Divide (Partisi berdasarkan Pivot):</strong> Pada Quick Sort, pembagian data menjadi dua bagian harus memenuhi ketentuan bahwa sub-list sebelah kiri berisi data yang nilainya lebih kecil atau sama dengan nilai acuan (<span class="highlight">pivot</span>), sedangkan sub-list sebelah kanan berisi data yang nilainya lebih besar dari nilai pivot. Nilai pivot yang dipilih biasanya merupakan data pada indeks awal dari barisan yang akan dipartisi.</li>
+            <li><strong>Combine:</strong> Berbeda dengan Merge Sort yang melakukan pengurutan saat menggabungkan data (<i>merging</i>), Quick Sort melakukan pengurutan secara langsung selama proses partisi (<i>divide</i>). Di akhir proses partisi, elemen pivot akan menempati posisi indeks yang sebenarnya dalam keadaan terurut. Langkah selanjutnya tinggal memerintahkan fungsi partisi secara berulang pada sub-list sebelum pivot dan sub-list setelah pivot hingga seluruh elemen terurut.</li>
+        </ol>
+
+        <h2>3. Counting Sort</h2>
+        <ul>
+            <li><strong>Konsep Dasar:</strong> Counting Sort merupakan algoritma pengurutan yang memiliki waktu komputasi lebih rendah dibandingkan dengan algoritma pembandingan tingkat lanjut seperti Merge Sort dan Quick Sort.</li>
+            <li><strong>Cara Kerja:</strong> Algoritma ini tidak membandingkan elemen satu per satu, melainkan menghitung total frekuensi kemunculan (jumlah elemen) dari masing-masing data terlebih dahulu. Berdasarkan jumlah elemen yang telah diketahui tersebut, nilai akumulatif (kumulatif) akan dihitung untuk menentukan posisi indeks akhir yang tepat dan absolut bagi setiap elemen data di dalam list hasil.</li>
+            <li><strong>Contoh Kasus:</strong> Misalkan terdapat data <code>[4, 3, 1, 2, 4, 2, 1, 1]</code>, perhitungannya adalah:
+                <ul>
+                    <li>Data <code>1</code> berjumlah 3 buah, maka akan menempati indeks ke-0 sampai ke-2.</li>
+                    <li>Data <code>2</code> berjumlah 2 buah, maka akan menempati indeks ke-3 sampai ke-4.</li>
+                    <li>Data <code>3</code> berjumlah 1 buah, maka akan menempati indeks ke-5.</li>
+                    <li>Data <code>4</code> berjumlah 2 buah, maka akan menempati indeks ke-6 sampai ke-7.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <hr style="border: 0; border-top: 1px solid #e1e4e8; margin: 30px 0;">
+        <h1>BAGIAN 2: KODE PROGRAM (SOURCE CODE)</h1>
+    </div>
+
+    <div class="markdown-cell" style="margin-bottom: 5px; box-shadow: none; background: transparent; padding: 0 20px;">
+        <h3>1. Implementasi Merge Sort</h3>
+        <p>Struktur kode menggunakan rekursi untuk memotong list menjadi dua bagian (<code>left_half</code> dan <code>right_half</code>), dilanjutkan dengan tiga struktur perulangan <code>while</code> untuk melakukan <em>merging</em> data secara terurut.</p>
+    </div>
+    <div class="code-cell">
+        <div class="code-input">def merge_sort(a_list):
+    print("Splitting", a_list)
+    if len(a_list) > 1:
+        mid = len(a_list) // 2
+        left_half = a_list[:mid]
+        right_half = a_list[mid:]
+        
+        # Proses rekursif Splitting
+        merge_sort(left_half)
+        merge_sort(right_half)
+        
+        i = 0  # indeks untuk left_half
+        j = 0  # indeks untuk right_half
+        k = 0  # indeks untuk hasil merging/sorting
+        
+        # Proses Merging dan membandingkan kedua sub-list
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] < right_half[j]:
+                a_list[k] = left_half[i]
+                i = i + 1
+            else:
+                a_list[k] = right_half[j]
+                j = j + 1
+            k = k + 1
+            
+        # Memasukkan sisa data yang ada di left_half (jika ada)
+        while i < len(left_half):
+            a_list[k] = left_half[i]
+            i = i + 1
+            k = k + 1
+            
+        # Memasukkan sisa data yang ada di right_half (jika ada)
+        while j < len(right_half):
+            a_list[k] = right_half[j]
+            j = j + 1
+            k = k + 1
+            
+        print("Merging", a_list)
+
+# Contoh Eksekusi
+a = [38, 12, 65, 22, 78, 25, 83, 21, 90]
+merge_sort(a)</div>
+    </div>
+
+    <div class="markdown-cell" style="margin-bottom: 5px; box-shadow: none; background: transparent; padding: 0 20px;">
+        <h3>2. Implementasi Quick Sort</h3>
+        <p>Struktur kode terbagi menjadi fungsi <code>partition</code> untuk membagi data berdasarkan pivot awal, dan fungsi utama <code>Quicksort</code> untuk melakukan pemanggilan partisi secara rekursif.</p>
+    </div>
+    <div class="code-cell">
+        <div class="code-input">def partition(A, p, q):
+    x = A[p]  # Menjadikan elemen pertama sebagai pivot
+    i = p
+    
+    # Loop penelusuran untuk mencari data yang lebih kecil atau sama dengan pivot
+    for j in range(p + 1, q + 1):
+        if A[j] <= x:
+            i = i + 1
+            A[i], A[j] = A[j], A[i]  # Pertukaran posisi elemen
+            
+    # Menempatkan pivot ke posisi indeks terurutnya yang sebenarnya
+    A[p], A[i] = A[i], A[p]
+    return i
+
+def Quicksort(A, p, q):
+    if p < q:
+        # Mencari indeks pivot baru hasil partisi
+        r = partition(A, p, q)
+        # Mempartisi sisi sebelah kiri pivot
+        Quicksort(A, p, r - 1)
+        # Mempartisi sisi sebelah kanan pivot
+        Quicksort(A, r + 1, q)
+
+# Contoh Eksekusi
+a = [37, 83, 10, 1, 45, 25, 12, 90, 54]
+Quicksort(a, 0, len(a) - 1)
+print("Hasil Quick Sort:", a)</div>
+    </div>
+
+    <div class="markdown-cell" style="margin-bottom: 5px; box-shadow: none; background: transparent; padding: 0 20px;">
+        <h3>3. Implementasi Counting Sort</h3>
+        <p>Kode ini bekerja menggunakan tiga tahapan <em>loop</em>: menyiapkan array penghitung <code>C</code>, menghitung frekuensi serta nilai kumulatif, dan menyusun hasil akhir ke dalam array <code>B</code>.</p>
+    </div>
+    <div class="code-cell">
+        <div class="code-input">def countingSort(A, k):
+    C = []
+    B = []
+    
+    # Loop 1: Menyiapkan list C untuk menyimpan jumlah frekuensi dengan inisialisasi 0
+    for i in range(k + 1):
+        C.append(0)
+        
+    # Loop 2: Menghitung jumlah elemen/frekuensi masing-masing data dari array A
+    for j in range(len(A)):
+        C[A[j]] = C[A[j]] + 1
+        B.append(0)  # Sekaligus menyiapkan kerangka dimensi list hasil B
+        
+    # Menghitung nilai akumulasi komulatif dari list frekuensi C
+    for i in range(1, k + 1):
+        C[i] = C[i] + C[i - 1]
+        
+    # Loop 3: Menempatkan data ke dalam indeks yang tepat pada list B secara mundur
+    for j in range(len(A) - 1, -1, -1):
+        B[C[A[j]] - 1] = A[j]
+        C[A[j]] = C[A[j]] - 1
+        
+    return B
+
+# Contoh Eksekusi (93 melambangkan nilai data tertinggi / k di dalam list)
+a_list = [54, 26, 93, 17, 1, 31, 2, 55, 20, 93, 20, 3, 4, 5]
+hasil_urut = countingSort(a_list, 93)
+print("Hasil Counting Sort:", hasil_urut)</div>
+    </div>
+
+</body>
+</html>
