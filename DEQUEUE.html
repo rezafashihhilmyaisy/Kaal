@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struktur Data: Deques</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 2px solid #34495e;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+        h2 {
+            margin-top: 30px;
+            border-left: 4px solid #e67e22;
+            padding-left: 10px;
+        }
+        .markdown-cell {
+            margin-bottom: 20px;
+            padding: 15px 20px;
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .code-cell {
+            margin-bottom: 25px;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .code-input {
+            background-color: #f6f8fa;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            white-space: pre;
+            overflow-x: auto;
+            border-bottom: 1px solid #e1e4e8;
+            color: #24292e;
+        }
+        .code-output {
+            background-color: #ffffff;
+            padding: 12px 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+            color: #444;
+            white-space: pre-wrap;
+            border-left: 4px solid #28a745;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        code {
+            background-color: #f0f2f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.95em;
+            color: #d63384;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="markdown-cell">
+        <h1>Struktur Data: Deques</h1>
+        
+        <h2>1. Definisi Deques</h2>
+        <ul>
+            <li><strong>Pengertian:</strong> Deques (Double-Ended Queues) merupakan struktur data ketiga setelah stacks dan queues. Perbedaan utamanya terletak pada fleksibilitas manipulasi ujung data.</li>
+            <li><strong>Perbandingan Ujung Operasi:</strong>
+                <ul>
+                    <li><span class="highlight">Stacks:</span> Penambahan dan penghapusan data dilakukan pada ujung yang sama (top).</li>
+                    <li><span class="highlight">Queues:</span> Penambahan data dilakukan di satu ujung (rear) dan penghapusan di ujung berbeda (front).</li>
+                    <li><span class="highlight">Deques:</span> Penambahan maupun penghapusan data dapat dilakukan secara bebas di kedua ujung, baik dari ujung front maupun ujung rear.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>2. Operasi Dasar pada Deques</h2>
+        <p>Beberapa fungsi atau operasi dasar yang berlaku pada Deques meliputi:</p>
+        <ul>
+            <li><code>deque()</code>: Inisialisasi struktur data deque baru dalam keadaan kosong.</li>
+            <li><code>addFront(data)</code>: Menambahkan data baru di ujung depan (front).</li>
+            <li><code>addRear(data)</code>: Menambahkan data baru di ujung belakang (rear).</li>
+            <li><code>removeFront()</code>: Menghapus dan mengambil data pada ujung depan (front).</li>
+            <li><code>removeRear()</code>: Menghapus dan mengambil data pada ujung belakang (rear).</li>
+            <li><code>isEmpty()</code>: Memeriksa apakah deque dalam kondisi kosong.</li>
+            <li><code>size()</code>: Mengembalikan nilai berupa jumlah total data di dalam deque.</li>
+        </ul>
+
+        <h2>3. Representasi Deques Menggunakan List Python</h2>
+        <p>Struktur data ini direpresentasikan menggunakan tipe data List bawaan Python dengan ketentuan indeks sebagai berikut:</p>
+        <ul>
+            <li><strong>Indeks Awal (Indeks ke-0):</strong> Berperan sebagai posisi depan (front).
+                <ul>
+                    <li>Penambahan data dilakukan menggunakan <code>insert(0, data)</code>.</li>
+                    <li>Penghapusan data dilakukan menggunakan <code>pop(0)</code>.</li>
+                </ul>
+            </li>
+            <li><strong>Indeks Akhir (Indeks Terakhir):</strong> Berperan sebagai posisi belakang (rear).
+                <ul>
+                    <li>Penambahan data dilakukan menggunakan <code>append(data)</code>.</li>
+                    <li>Penghapusan data dilakukan menggunakan <code>pop()</code> tanpa argumen indeks.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>4. Contoh Implementasi Kasus: Pengecekan Palindrom</h2>
+        <ul>
+            <li><strong>Definisi:</strong> Palindrom adalah rangkaian kata atau bilangan yang memiliki urutan karakter yang terbaca sama, baik ketika dibaca dari depan maupun dari belakang.</li>
+            <li><strong>Pemanfaatan Deque:</strong> Deques sangat tepat digunakan untuk masalah ini. Cara kerjanya adalah dengan memasukkan semua karakter kata ke dalam deque, lalu membandingkan karakter pada ujung front dan ujung rear secara bersamaan. Jika karakter pada kedua ujung tersebut selalu sama hingga tersisa 1 atau 0 karakter, maka kata tersebut divalidasi sebagai palindrom.</li>
+        </ul>
+
+        <hr style="border: 0; border-top: 1px solid #e1e4e8; margin: 20px 0;">
+        <h1>KODE PROGRAM (SOURCE CODE)</h1>
+        <h3>1. Fungsi Operasi Dasar Deque</h3>
+        <p>Implementasi fungsi-fungsi dasar pembuatan dan pemanipulangan deque berbasis List:</p>
+    </div>
+
+    <div class="code-cell">
+        <div class="code-input">def createDeque():
+    d = []
+    return d
+
+def addFront(d, data):
+    d.insert(0, data)
+    return d
+
+def addRear(d, data):
+    d.append(data)
+    return d
+
+def removeRear(d):
+    data = d.pop()
+    return data
+
+def removeFront(d):
+    data = d.pop(0)
+    return data
+
+def isEmpty(d):
+    return d == []
+
+def size(d):
+    return len(d)</div>
+    </div>
+
+    <div class="code-cell">
+        <div class="code-input"># Membuat objek deque kosong
+deq = createDeque()
+
+# Menambahkan data di ujung Front
+addFront(deq, 'struktur')
+addFront(deq, 'data')
+# Isi deque sekarang: ['data', 'struktur']
+
+# Menambahkan data di ujung Rear
+addRear(deq, '2018')
+addRear(deq, '2019')
+addRear(deq, '100')
+# Isi deque sekarang: ['data', 'struktur', '2018', '2019', '100']
+
+# Melakukan operasi removeFront
+data = removeFront(deq)
+print(data)  # Output: data
+print(deq)   # Output: ['struktur', '2018', '2019', '100']
+
+# Melakukan operasi removeRear
+data = removeRear(deq)
+print(data)  # Output: 100
+print(deq)   # Output: ['struktur', '2018', '2019']
+
+# Memeriksa ukuran dan status kekosongan
+print(size(deq))     # Output: 3
+print(isEmpty(deq))  # Output: False
+
+# Memutar data (mengambil dari front, lalu menaruh di rear)
+addRear(deq, removeFront(deq))
+print(deq)   # Output: ['2018', '2019', 'struktur']</div>
+        <div class="code-output">data
+['struktur', '2018', '2019', '100']
+100
+['struktur', '2018', '2019']
+3
+False
+['2018', '2019', 'struktur']</div>
+    </div>
+
+    <div class="code-cell">
+        <div class="code-input">def cekPalindrom(string):
+    palindrom = createDeque()
+
+    # Memasukkan semua huruf ke dalam antrian belakang (rear)
+    for huruf in string:
+        addRear(palindrom, huruf)
+
+    cek = True
+
+    # Loop berjalan selama karakter dalam deque tersisa lebih dari 1
+    while size(palindrom) > 1:
+        a = removeRear(palindrom)
+        b = removeFront(palindrom)
+
+        # Jika karakter ujung depan dan ujung belakang sama
+        if a == b:
+            cek = cek and True
+        else:
+            cek = cek and False
+
+    return cek
+
+# Contoh Pengujian Fungsi
+print(cekPalindrom('hannah'))   # Output: True
+print(cekPalindrom('surabaya')) # Output: False
+print(cekPalindrom('abcdcba'))  # Output: True
+print(cekPalindrom('katak'))    # Output: True
+print(cekPalindrom('taat'))     # Output: True
+print(cekPalindrom('dia'))      # Output: False</div>
+        <div class="code-output">True
+False
+True
+True
+True
+False</div>
+    </div>
+
+</body>
+</html>
