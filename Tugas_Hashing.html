@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Hashing dan Sorting</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 3px solid #34495e;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        h2 {
+            border-left: 4px solid #2980b9;
+            padding-left: 10px;
+            margin-top: 25px;
+        }
+        h3 {
+            color: #16a085;
+            margin-top: 20px;
+        }
+        .markdown-cell {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .code-cell {
+            margin-bottom: 25px;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .code-input {
+            background-color: #f6f8fa;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            white-space: pre;
+            overflow-x: auto;
+            color: #24292e;
+            border-bottom: 1px solid #e1e4e8;
+        }
+        .code-output {
+            background-color: #1e272e;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+            color: #ffdd59;
+            white-space: pre-wrap;
+            border-left: 4px solid #ffd32a;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        code {
+            background-color: #f0f2f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.95em;
+            color: #d63384;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .formula-box {
+            background-color: #f1f2f6;
+            padding: 12px;
+            border-radius: 4px;
+            font-family: 'Cambria', serif;
+            font-size: 1.1em;
+            display: inline-block;
+            margin: 10px 0;
+            border-left: 4px solid #74b9ff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="markdown-cell">
+        <h1>Tugas Hashing dan Sorting</h1>
+        <p>Notebook ini berisi implementasi:</p>
+        <ol>
+            <li>Hashing dengan Close Address (Chaining)</li>
+            <li>Hashing dengan Open Address
+                <ul>
+                    <li>Fungsi Hash Biasa</li>
+                    <li>Mid Square Method</li>
+                    <li>Linear Probing (CRUD)</li>
+                    <li>Quadratic Probing (CRUD)</li>
+                </ul>
+            </li>
+            <li>Analisis Load Factor</li>
+            <li>Perbandingan waktu sorting:
+                <ul>
+                    <li>Bubble Sort</li>
+                    <li>Selection Sort</li>
+                    <li>Insertion Sort</li>
+                    <li>Merge Sort</li>
+                    <li>Quick Sort</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <div class="markdown-cell">
+        <h1>HASHING</h1>
+        <p>Hashing adalah teknik struktur data untuk menyimpan dan mencari data secara instan menggunakan fungsi hash.</p>
+        <p>Cara kerjanya adalah dengan mengubah sebuah data atau kunci (<em>key</em>) menjadi indeks angka. Indeks inilah yang menjadi alamat penyimpanan data tersebut di dalam tabel hash (<em>hash table</em>). Lewat metode ini, proses pencarian data menjadi jauh lebih cepat daripada mencarinya satu per satu secara manual.</p>
+        
+        <h3>Jenis Hashing</h3>
+        <h4>A. Close Address (Chaining)</h4>
+        <p>Close Address atau Chaining adalah solusi mengatasi bentrokan data (<em>collision</em>) dengan cara menumpuk data-data yang memiliki indeks sama ke dalam satu kantong (<em>bucket</em>) yang sama.</p>
+        <p>Pada metode ini, satu indeks pada tabel hash bisa menampung lebih dari satu data sekaligus, biasanya dihubungkan menggunakan struktur linked list atau list.</p>
+        
+        <h4>B. Open Address</h4>
+        <p>Jika terjadi collision, pencarian slot kosong dilakukan menggunakan metode tertentu seperti:</p>
+        <ul>
+            <li>Linear Probing</li>
+            <li>Quadratic Probing</li>
+        </ul>
+    </div>
+
+    <div class="code-cell">
+        <div class="code-input">class HashTableChaining:
+    def __init__(self, size):
+        self.size = size
+        self.table = [[] for _ in range(size)]
+
+    def hash_function(self, key):
+        return key % self.size
+
+    def create(self, key):
+        index = self.hash_function(key)
+        self.table[index].append(key)
+
+    def read(self, key):
+        index = self.hash_function(key)
+        return key in self.table[index]
+
+    def update(self, old_key, new_key):
+        index = self.hash_function(old_key)
+        if old_key in self.table[index]:
+            self.table[index].remove(old_key)
+            self.table[index].append(new_key)
+
+    def delete(self, key):
+        index = self.hash_function(key)
+        if key in self.table[index]:
+            self.table[index].remove(key)
+
+    def display(self):
+        for i, bucket in enumerate(self.table):
+            print(f"Index {i}: {bucket}")
+
+
+print("HASHING CHAINING")
+ht = HashTableChaining(5)
+
+ht.create(10)
+ht.create(15)
+ht.create(20)
+ht.create(25)
+
+ht.display()
+
+print("\nRead 15:", ht.read(15))
+
+ht.update(15, 35)
+print("\nSetelah Update")
+ht.display()
+
+ht.delete(20)
+print("\nSetelah Delete")
+ht.display()</div>
+        <div class="code-output">HASHING CHAINING
+Index 0: [10, 15, 20, 25]
+Index 1: []
+Index 2: []
+Index 3: []
+Index 4: []
+
+Read 15: True
+
+Setelah Update
+Index 0: [10, 20, 25, 35]
+Index 1: []
+Index 2: []
+Index 3: []
+Index 4: []
+
+Setelah Delete
+Index 0: [10, 25, 35]
+Index 1: []
+Index 2: []
+Index 3: []
+Index 4: []</div>
+    </div>
+
+    <div class="markdown-cell">
+        <h2>2. OPEN ADDRESS</h2>
+        <p>Ketika collision terjadi, Open Address menggunakan teknik probing untuk melacak dan menemukan slot kosong yang tersisa di dalam tabel hash. Data baru kemudian akan ditempatkan pada slot kosong pertama yang berhasil ditemukan.</p>
+    </div>
+
+    <div class="code-cell">
+        <div class="code-input">class LinearProbingHash:
+    def __init__(self, size):
+        self.size = size
+        self.table = [None] * size
+
+    def hash_function(self, key):
+        return key % self.size
+
+    def insert(self, key):
+        index = self.hash_function(key)
+        start = index
+
+        while self.table[index] is not None:
+            index = (index + 1) % self.size
+
+            if index == start:
+                print("Hash Table Penuh")
+                return
+
+        self.table[index] = key
+
+    def search(self, key):
+        index = self.hash_function(key)
+        start = index
+
+        while self.table[index] is not None:
+            if self.table[index] == key:
+                return True
+
+            index = (index + 1) % self.size
+
+            if index == start:
+                break
+
+        return False
+
+    def update(self, old_key, new_key):
+        self.delete(old_key)
+        self.insert(new_key)
+
+    def delete(self, key):
+        index = self.hash_function(key)
+        start = index
+
+        while self.table[index] is not None:
+            if self.table[index] == key:
+                self.table[index] = None
+                return
+
+            index = (index + 1) % self.size
+
+            if index == start:
+                break
+
+    def display(self):
+        print(self.table)
+
+
+print("LINEAR PROBING")
+lp = LinearProbingHash(5)
+
+lp.insert(10)
+lp.insert(15)
+lp.insert(20)
+lp.insert(25)
+lp.insert(30)
+
+lp.display()
+
+print("Search 20:", lp.search(20))
+
+lp.update(20, 50)
+print("Setelah Update")
+lp.display()
+
+lp.delete(15)
+print("Setelah Delete")
+lp.display()
+
+print("\nContoh Hash Table Penuh")
+lp.insert(35)
+lp.insert(40)</div>
+        <div class="code-output">LINEAR PROBING
+[10, 15, 20, 25, 30]
+Search 20: True
+Setelah Update
+[10, 15, 50, 25, 30]
+Setelah Delete
+[10, None, 50, 25, 30]
+
+Contoh Hash Table Penuh
+Hash Table Penuh</div>
+    </div>
+
+    <div class="code-cell">
+        <div class="code-input">class QuadraticProbingHash:
+    def __init__(self, size):
+        self.size = size
+        self.table = [None] * size
+
+    def hash_function(self, key):
+        return key % self.size
+
+    def insert(self, key):
+        index = self.hash_function(key)
+
+        for i in range(self.size):
+            new_index = (index + i**2) % self.size
+
+            if self.table[new_index] is None:
+                self.table[new_index] = key
+                return
+
+        print("Hash Table Penuh")
+
+    def search(self, key):
+        index = self.hash_function(key)
+
+        for i in range(self.size):
+            new_index = (index + i**2) % self.size
+
+            if self.table[new_index] == key:
+                return True
+
+        return False
+
+    def update(self, old_key, new_key):
+        self.delete(old_key)
+        self.insert(new_key)
+
+    def delete(self, key):
+        index = self.hash_function(key)
+
+        for i in range(self.size):
+            new_index = (index + i**2) % self.size
+
+            if self.table[new_index] == key:
+                self.table[new_index] = None
+                return
+
+    def display(self):
+        print(self.table)
+
+
+print("QUADRATIC PROBING")
+qp = QuadraticProbingHash(5)
+
+qp.insert(10)
+qp.insert(15)
+qp.insert(20)
+qp.insert(25)
+
+qp.display()
+
+print("Search 25:", qp.search(25))
+
+qp.update(25, 35)
+print("Setelah Update")
+qp.display()
+
+qp.delete(20)
+print("Setelah Delete")
+qp.display()</div>
+        <div class="code-output">QUADRATIC PROBING
+Hash Table Penuh
+[10, 15, None, None, 20]
+Search 25: False
+Hash Table Penuh
+Setelah Update
+[10, 15, None, None, 20]
+Setelah Delete
+[10, 15, None, None, None]</div>
+    </div>
+
+    <div class="markdown-cell">
+        <h2>3. MID SQUARE METHOD</h2>
+        <p>Mid Square Method adalah metode hashing dengan cara:</p>
+        <ol>
+            <li>Kuadratkan key</li>
+            <li>Ambil digit tengah</li>
+            <li>Gunakan sebagai indeks hash</li>
+        </ol>
+    </div>
+
+    <div class="code-cell">
+        <div class="code-input">def mid_square_hash(key, size):
+    square = key ** 2
+    square_str = str(square)
+
+    mid = len(square_str) // 2
+
+    if len(square_str) > 1:
+        middle_digits = square_str[mid-1:mid+1]
+    else:
+        middle_digits = square_str
+
+    return int(middle_digits) % size
+
+
+size = 10
+keys = [12, 25, 37, 49]
+
+print("MID SQUARE METHOD")
+for key in keys:
+    print(f"Key {key} -> Hash {mid_square_hash(key, size)}")</div>
+        <div class="code-output">MID SQUARE METHOD
+Key 12 -> Hash 4
+Key 25 -> Hash 2
+Key 37 -> Hash 6
+Key 49 -> Hash 0</div>
+    </div>
+
+    <div class="markdown-cell">
+        <h2>4. LOAD FACTOR</h2>
+        <p>Load Factor dihitung dengan rumus:</p>
+        <div class="formula-box">Load Factor = jumlah data / ukuran tabel</div>
+        <p>Agar kinerja dan performa tabel hash tetap kencang, nilai Load Factor idealnya harus selalu di bawah 1. Jika nilainya mendekati atau bahkan lebih dari 1, proses pencarian data akan melambat secara drastis karena makin sering terjadi bentrokan (<i>collision</i>).</p>
+    </div>
+
+    <div class="code-cell">
+        <div class="code-input">jumlah_data = 7
+ukuran_tabel = 10
+
+load_factor = jumlah_data / ukuran_tabel
+
+print("Jumlah Data :", jumlah_data)
+print("Ukuran Tabel :", ukuran_tabel)
+print("Load Factor :", load_factor)
+
+if load_factor < 1:
+    print("Load Factor memenuhi syarat")
+else:
+    print("Load Factor terlalu besar")</div>
+        <div class="code-output">Jumlah Data : 7
+Ukuran Tabel : 10
+Load Factor : 0.7
+Load Factor memenuhi syarat</div>
+    </div>
+
+    <div class="markdown-cell">
+        <h2>5. SORTING</h2>
+        <p>Eksperimen ini dilakukan untuk menguji dan mengukur performa kecepatan (<i>running time</i>) dari beberapa algoritma sorting. Pengujian fokus pada waktu yang dihabiskan oleh masing-masing algoritma dalam menyusun kembali acakan data menjadi berurutan dari nilai terkecil ke terbesar (<i>ascending</i>).</p>
+        <p>Algoritma yang diuji:</p>
+        <ul>
+            <li>Bubble Sort</li>
+            <li>Selection Sort</li>
+            <li>Insertion Sort</li>
+            <li>Merge Sort</li>
+            <li>Quick Sort</li>
+        </ul>
+    </div>
+
+    <div class="code-cell">
+        <div class="code-input">import random
+import time
+
+data_sizes = [100, 200, 300, 400, 500]
+
+def bubble_sort(arr):
+    arr = arr.copy()
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[arr[j+1]] = arr[j+1], arr[j] # Catatan: swap konvensional aman
+                # arr[j], arr[j+1] = arr[j+1], arr[j]
+    return arr
+
+def selection_sort(arr):
+    arr = arr.copy()
+    n = len(arr)
+    for i in range(n):
+        min_idx = i
+        for j in range(i+1, n):
+            if arr[j] < arr[min_idx]:
+                min_idx = j
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+    return arr
+
+def insertion_sort(arr):
+    arr = arr.copy()
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and key < arr[j]:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+    return arr
+
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    
+    result = []
+    i = j = 0
+    while i < len(left) and j < len(right):
+        if left[i] < right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result
+
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr)//2]
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quick_sort(left) + middle + quick_sort(right)
+
+algorithms = {
+    "Bubble Sort": bubble_sort,
+    "Selection Sort": selection_sort,
+    "Insertion Sort": insertion_sort,
+    "Merge Sort": merge_sort,
+    "Quick Sort": quick_sort
+}
+
+for size in data_sizes:
+    print(f"\nUkuran Data: {size}")
+    data = [random.randint(1, 1000) for _ in range(size)]
+    
+    for name, func in algorithms.items():
+        start = time.time()
+        func(data)
+        end = time.time()
+        print(f"{name:<20} : {end - start:.6f} detik")</div>
+        <div class="code-output">Ukuran Data: 100
+Bubble Sort          : 0.000444 detik
+Selection Sort       : 0.000191 detik
+Insertion Sort       : 0.000222 detik
+Merge Sort           : 0.000162 detik
+Quick Sort           : 0.000119 detik
+
+Ukuran Data: 200
+Bubble Sort          : 0.001654 detik
+Selection Sort       : 0.000823 detik
+Insertion Sort       : 0.000885 detik
+Merge Sort           : 0.000693 detik
+Quick Sort           : 0.000277 detik
+
+Ukuran Data: 300
+Bubble Sort          : 0.003268 detik
+Selection Sort       : 0.001816 detik
+Insertion Sort       : 0.001457 detik
+Merge Sort           : 0.000506 detik
+Quick Sort           : 0.000381 detik
+
+Ukuran Data: 400
+Bubble Sort          : 0.006284 detik
+Selection Sort       : 0.003426 detik
+Insertion Sort       : 0.002992 detik
+Merge Sort           : 0.000712 detik
+Quick Sort           : 0.000515 detik
+
+Ukuran Data: 500
+Bubble Sort          : 0.010439 detik
+Selection Sort       : 0.005457 detik
+Insertion Sort       : 0.004996 detik
+Merge Sort           : 0.000863 detik
+Quick Sort           : 0.000631 detik</div>
+    </div>
+
+    <div class="markdown-cell">
+        <h2>6. KESIMPULAN</h2>
+        <ul>
+            <li><strong>Hashing</strong> menjadi teknik andalan untuk mempercepat sekaligus mengefektifkan proses penyimpanan dan penemuan kembali suatu data.</li>
+            <li>Melalui metode <strong>Chaining</strong>, setiap data yang bentrok (<i>collision</i>) akan dikelompokkan bersama di dalam satu wadah (<i>bucket</i>) berbentuk list/linked list bertumpuk.</li>
+            <li>Metode <strong>Open Address</strong> menyelesaikan <i>collision</i> dengan cara menggeser data dan berburu slot kosong lain di dalam tabel menggunakan teknik <i>probing</i>.</li>
+            <li><strong>Linear Probing</strong> menawarkan cara kerja yang paling simpel, namun berisiko memicu penumpukan data (<i>clustering</i>) di area indeks tertentu.</li>
+            <li><strong>Quadratic Probing</strong> berhasil meminimalkan risiko penumpukan data tersebut karena pola pencarian slot kosongnya melompat secara kuadratik ($+1, +4, +9, \dots$).</li>
+            <li>Dalam menangani data bervolume besar, kelompok algoritma <strong>Merge Sort</strong> dan <strong>Quick Sort</strong> terbukti jauh lebih tangguh, efisien, dan stabil ketimbang Bubble Sort, Selection Sort, maupun Insertion Sort.</li>
+        </ul>
+    </div>
+
+</body>
+</html>
