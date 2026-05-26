@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struktur Data: Queues (Antrian)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 2px solid #34495e;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+        h2 {
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+        }
+        .markdown-cell {
+            margin-bottom: 20px;
+            padding: 15px 20px;
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .code-cell {
+            margin-bottom: 25px;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .code-input {
+            background-color: #f6f8fa;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            white-space: pre;
+            overflow-x: auto;
+            border-bottom: 1px solid #e1e4e8;
+            color: #24292e;
+        }
+        .code-output {
+            background-color: #ffffff;
+            padding: 12px 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+            color: #444;
+            white-space: pre-wrap;
+            border-left: 4px solid #28a745;
+        }
+        .execute-result {
+            background-color: #fdfffe;
+            padding: 8px 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+            color: #c0392b;
+            font-weight: bold;
+            border-left: 4px solid #e67e22;
+            border-top: 1px dashed #e1e4e8;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        code {
+            background-color: #f0f2f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.95em;
+            color: #e83e8c;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="markdown-cell">
+        <h1>BAGIAN 1: MATERI (TEORI & PENJELASAN)</h1>
+        
+        <h2>1. Definisi Queues</h2>
+        <p><span class="highlight">Pengertian:</span> Queues atau antrian merupakan struktur data di mana penambahan data baru dan penghapusan data berada di ujung yang berbeda. Hal ini berbeda dengan stacks, di mana penambahan dan penghapusan data dilakukan pada ujung yang sama.</p>
+        <p><span class="highlight">Ujung Antrian:</span> Pada Queues, penambahan data baru dilakukan di ujung yang disebut <strong>rear</strong>, sedangkan penghapusan data dilakukan pada ujung yang disebut <strong>front</strong>.</p>
+        <p><span class="highlight">Konsep:</span> Jika stacks menggunakan konsep LIFO (Last In First Out), maka Queues menggunakan konsep <strong>FIFO (First In First Out)</strong>.</p>
+
+        <h2>2. Operasi Dasar pada Queues</h2>
+        <p>Terdapat beberapa operasi dasar dalam struktur data Queues, yaitu:</p>
+        <ul>
+            <li><code>queue()</code>: Inisialisasi struktur data queue kosong.</li>
+            <li><code>enqueue(data)</code>: Penambahan data baru pada queue di ujung <em>rear</em>.</li>
+            <li><code>dequeue()</code>: Penghapusan atau pengambilan data pada ujung <em>front</em>.</li>
+            <li><code>isEmpty()</code>: Pengecekan apakah queue dalam keadaan kosong atau tidak.</li>
+            <li><code>size()</code>: Memberikan informasi mengenai jumlah data yang terdapat pada queue.</li>
+        </ul>
+
+        <h2>3. Implementasi Menggunakan List Python</h2>
+        <p>Implementasi queues dapat dilakukan dengan memanfaatkan tipe data list pada Python.</p>
+        <ul>
+            <li><span class="highlight">Posisi Front:</span> Data pada indeks terakhir pada list menunjukkan ujung <em>front</em> pada queues. Oleh karena itu, proses dequeue dilakukan menggunakan method <code>.pop()</code> bawaan list.</li>
+            <li><span class="highlight">Posisi Rear:</span> Data pada indeks awal (indeks ke-0) menunjukkan ujung <em>rear</em> pada queues. Oleh karena itu, proses enqueue dilakukan menggunakan method <code>.insert(0, data)</code>.</li>
+        </ul>
+        
+        <p><span class="highlight">Contoh Ilustrasi Perubahan List:</span></p>
+        <ul>
+            <li>Misalkan data awal berbentuk list: <code>data = [8, 3, 9, 2]</code></li>
+            <li>Jika dilakukan <code>data.insert(0, 74)</code> (enqueue), data menjadi: <code>data = [74, 8, 3, 9, 2]</code></li>
+            <li>Jika dilakukan <code>data.pop()</code> (dequeue), data (di ujung front) akan terhapus menjadi: <code>data = [74, 8, 3, 9]</code></li>
+        </ul>
+
+        <h2>4. Contoh Implementasi Kasus: Permainan Ular Naga</h2>
+        <p>Contoh penerapan nyata dari queues adalah permainan anak-anak "Ular Naga".</p>
+        <p><span class="highlight">Aturan Simulasi:</span> Sekelompok anak berbaris membentuk antrian. Fungsi lagu digantikan dengan sebuah bilangan hitungan tertentu. Antrian akan berputar (anak di depan didequeue lalu di-enqueue kembali ke belakang) selama hitungan berjalan. Ketika hitungan selesai, anak yang berada di ujung depan (front) harus keluar dari antrian. Permainan berakhir dan dimenangkan oleh satu anak yang tersisa di dalam antrian.</p>
+        
+        <h2>5. Fungsi Operasi Dasar Queue</h2>
+        <p>Berikut adalah fungsi-fungsi standar untuk membentuk dan memanipulasi struktur data queue:</p>
+    </div>
+
+    <div class="code-cell">
+        <div class="code-input">def createQueue():
+    q = []
+    return q
+
+def enqueue(q, data):
+    q.insert(0, data)
+    return q
+
+def dequeue(q):
+    data = q.pop()
+    return data
+
+def isEmpty(q):
+    return q == []
+
+def size(q):
+    return len(q)</div>
+    </div>
+
+    <div class="code-cell">
+        <div class="code-input"># Membuat antrian baru
+q = createQueue()
+
+# Memasukkan data (enqueue)
+enqueue(q, 'matematika')
+enqueue(q, 'struktur data')
+enqueue(q, 'bahasa inggris')
+enqueue(q, 'pemrograman web')
+
+# Menampilkan isi antrian
+print(q)
+# Output: ['pemrograman web', 'bahasa inggris', 'struktur data', 'matematika']
+
+# Mengambil data dari antrian (dequeue)
+temp = dequeue(q)
+print(q)
+print(temp)</div>
+        <div class="code-output">['pemrograman web', 'bahasa inggris', 'struktur data', 'matematika']
+['pemrograman web', 'bahasa inggris', 'struktur data']
+matematika</div>
+    </div>
+
+    <div class="code-cell">
+        <div class="code-input">def ularNaga(nama, hitungan):
+    gameQueue = createQueue()
+
+    # Memasukkan semua nama anak ke dalam antrian
+    for namaAnak in nama:
+        enqueue(gameQueue, namaAnak)
+
+    print('Peserta Permainan =', gameQueue)
+
+    # Permainan berjalan selama jumlah anak di dalam antrian lebih dari 1
+    while size(gameQueue) > 1:
+        for i in range(hitungan):
+            # Anak paling depan dipindahkan ke barisan paling belakang
+            enqueue(gameQueue, dequeue(gameQueue))
+            print('hitungan ke-', i, '=', gameQueue)
+
+        # Anak yang berada di ujung front keluar dari permainan setelah hitungan habis
+        dequeue(gameQueue)
+        print('Peserta Permainan =', gameQueue)
+
+    # Mengembalikan nama anak terakhir yang menang
+    return dequeue(gameQueue)
+
+# Menjalankan fungsi dengan daftar nama anak dan jumlah hitungan = 2
+ularNaga(['andi', 'rita', 'sari', 'anton', 'rafa', 'diana', 'zaki'], 2)</div>
+        <div class="code-output">Peserta Permainan = ['zaki', 'diana', 'rafa', 'anton', 'sari', 'rita', 'andi']
+hitungan ke- 0 = ['andi', 'zaki', 'diana', 'rafa', 'anton', 'sari', 'rita']
+hitungan ke- 1 = ['rita', 'andi', 'zaki', 'diana', 'rafa', 'anton', 'sari']
+Peserta Permainan = ['rita', 'andi', 'zaki', 'diana', 'rafa', 'anton']
+hitungan ke- 0 = ['anton', 'rita', 'andi', 'zaki', 'diana', 'rafa']
+hitungan ke- 1 = ['rafa', 'anton', 'rita', 'andi', 'zaki', 'diana']
+Peserta Permainan = ['rafa', 'anton', 'rita', 'andi', 'zaki']
+hitungan ke- 0 = ['zaki', 'rafa', 'anton', 'rita', 'andi']
+hitungan ke- 1 = ['andi', 'zaki', 'rafa', 'anton', 'rita']
+Peserta Permainan = ['andi', 'zaki', 'rafa', 'anton']
+hitungan ke- 0 = ['anton', 'andi', 'zaki', 'rafa']
+hitungan ke- 1 = ['rafa', 'anton', 'andi', 'zaki']
+Peserta Permainan = ['rafa', 'anton', 'andi']
+hitungan ke- 0 = ['andi', 'rafa', 'anton']
+hitungan ke- 1 = ['anton', 'andi', 'rafa']
+Peserta Permainan = ['anton', 'andi']
+hitungan ke- 0 = ['andi', 'anton']
+hitungan ke- 1 = ['anton', 'andi']
+Peserta Permainan = ['anton']</div>
+        <div class="execute-result">'anton'</div>
+    </div>
+
+</body>
+</html>
