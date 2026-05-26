@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struktur Data: Analisis Algoritma Searching</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        h1, h2, h3, h4 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 3px solid #34495e;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        h2 {
+            border-left: 4px solid #2980b9;
+            padding-left: 10px;
+            margin-top: 25px;
+        }
+        h3 {
+            color: #16a085;
+            margin-top: 20px;
+        }
+        .markdown-cell {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .code-cell {
+            margin-bottom: 25px;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .code-input {
+            background-color: #f6f8fa;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            white-space: pre;
+            overflow-x: auto;
+            color: #24292e;
+        }
+        blockquote {
+            margin: 15px 0;
+            padding: 10px 20px;
+            background-color: #fdfefe;
+            border-left: 5px solid #e67e22;
+            color: #555;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        code {
+            background-color: #f0f2f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.95em;
+            color: #d63384;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="markdown-cell">
+        <h1>SEQUENTIAL SEARCH</h1>
+        
+        <h3>1. Pengantar Pencarian Data (Searching)</h3>
+        <ul>
+            <li>Pencarian data sangat diperlukan pada berbagai proses komputasi, sistem informasi, dan bidang lainnya.</li>
+            <li>Melalui pencarian data, posisi suatu elemen dapat diketahui terhadap kumpulan data yang lain, sehingga data tersebut dapat digunakan untuk proses berikutnya (misalnya untuk keperluan administratif).</li>
+            <li><span class="highlight">Contoh Kasus:</span> Menemukan data lengkap seorang mahasiswa dari sekumpulan data dengan menggunakan nomor induk mahasiswa sebagai kunci pencarian (<i>key</i>).</li>
+            <li>Umumnya pencarian menghasilkan posisi indeks dari data yang dicari, tetapi untuk pencarian sederhana, output berupa nilai boolean (<code>True</code> atau <code>False</code>) sudah cukup untuk menandakan keberadaan data tersebut.</li>
+            <li>Di dalam bahasa Python, proses pencarian boolean sederhana ini telah disediakan secara bawaan melalui penggunaan sintaks <code>in</code>.</li>
+        </ul>
+
+        <h3>2. Algoritma Sequential Search</h3>
+        <ul>
+            <li><strong>Definisi:</strong> <em>Sequential Search</em> (pencarian berurutan/linier) adalah teknik pencarian data dengan cara membandingkan data yang dicari dengan seluruh data yang ada pada kumpulan data secara satu per satu, mulai dari data pertama hingga data terakhir.</li>
+            <li>Berdasarkan kondisi kumpulan data yang akan diperiksa, terdapat dua konsep <em>sequential search</em>, yaitu:
+                <ol>
+                    <li><strong>Unordered List Sequential Search</strong></li>
+                    <li><strong>Ordered List Sequential Search</strong></li>
+                </ol>
+            </li>
+        </ul>
+
+        <h4>A. Unordered List Sequential Search</h4>
+        <ul>
+            <li>Pada kondisi ini, data berada dalam keadaan acak atau tidak terurut.</li>
+            <li>Akibatnya, proses pencarian harus dilakukan mulai dari indeks awal sampai indeks paling terakhir, atau pencarian baru akan berhenti seketika ketika data yang dicari sudah ditemukan.</li>
+        </ul>
+
+        <h4>B. Ordered List Sequential Search</h4>
+        <ul>
+            <li>Pada kondisi ini, kumpulan data sudah berada dalam keadaan terurut.</li>
+            <li>Keadaan yang terurut ini dapat mengurangi waktu komputasi karena kita dapat menghentikan pencarian lebih awal tanpa harus memeriksa sampai ujung akhir data.</li>
+            <li><span class="highlight">Contoh Kasus:</span> Misalkan terdapat list terurut <code>[2, 12, 15, 25, 30, 54, 73]</code> and data yang dicari adalah <code>10</code>. Ketika pencarian sampai pada indeks yang bernilai <code>15</code>, sistem dapat langsung menyimpulkan bahwa data <code>10</code> tidak ada di dalam list. Hal ini dikarenakan indeks tersebut hingga indeks-indeks setelahnya dipastikan memiliki nilai yang lebih besar dari <code>15</code>.</li>
+        </ul>
+
+        <hr style="border: 0; border-top: 1px solid #e1e4e8; margin: 20px 0;">
+        <h2>BAGIAN 2: KODE PROGRAM (SOURCE CODE)</h2>
+        
+        <h3>1. Pencarian Bawaan Python (Sintaks <code>in</code>)</h3>
+        <p>Contoh penggunaan operator <code>in</code> untuk memeriksa keberadaan elemen di dalam list:</p>
+    </div>
+
+    <div class="code-cell">
+        <div class="code-input">a = [12, 5, 9, 8, 1, 10, 26]
+
+print(11 in a) # Output: False
+print(12 in a) # Output: True
+print(15 in a) # Output: False</div>
+    </div>
+
+    <div class="markdown-cell">
+        <h3>2. Fungsi Unordered List Sequential Search</h3>
+        <p>Berikut adalah implementasi fungsi pencarian linier konvensional pada data yang tidak terurut:</p>
+    </div>
+
+    <div class="code-cell">
+        <div class="code-input">def seqSearch(listData, data):
+    ind = 0
+    found = False
+    
+    # Loop berjalan selama indeks belum habis dan data belum ditemukan
+    while ind < len(listData) and not found:
+        if listData[ind] == data:
+            found = True
+        else:
+            ind = ind + 1
+            
+    return found
+
+# Pengujian Fungsi
+a = [12, 5, 9, 8, 1, 18, 26]
+print(seqSearch(a, 1)) # Output: True</div>
+    </div>
+
+    <div class="markdown-cell">
+        <h3>3. Fungsi Ordered List Sequential Search</h3>
+        <p>Berikut adalah rekonstruksi kode implementasi pencarian linier pada data yang sudah terurut (dengan penambahan bendera <code>stop</code> untuk optimasi berekstensi):</p>
+    </div>
+
+    <div class="code-cell">
+        <div class="code-input">def orderedSeqSearch(listData, data):
+    ind = 0
+    found = False
+    stop = False
+    position = []
+    
+    # Loop berhenti jika data ditemukan atau nilai data di list sudah melewati target
+    while ind < len(listData) and not found and not stop:
+        if listData[ind] == data:
+            found = True
+        else:
+            position.append(ind)
+            if listData[ind] > data:
+                stop = True
+            else:
+                ind = ind + 1
+                
+    if found:
+        return ind
+    else:
+        return 'Data tidak ada'
+
+# Pengujian Fungsi
+a = [1, 1, 5, 5, 8, 9, 10, 12, 26]
+ind = orderedSeqSearch(a, 5)
+print(ind) # Output: 2 (indeks ditemukannya angka 5 pertama kali)</div>
+    </div>
+
+    <div class="markdown-cell">
+        <h1>BINARY SEARCH</h1>
+        
+        <h3>1. Keterbatasan Sequential Search</h3>
+        <ul>
+            <li>Algoritma <em>Sequential Search</em> hanya akan menemukan data dengan cepat jika data yang dicari kebetulan terletak di indeks pertama dari suatu list data.</li>
+            <li>Namun, jika data yang dicari berada di posisi terakhir atau posisi lainnya, algoritma tersebut membutuhkan waktu yang lebih lama karena harus memeriksa elemen satu per satu dari awal sampai akhir.</li>
+        </ul>
+
+        <h3>2. Konsep Dasar Binary Search</h3>
+        <ul>
+            <li>Algoritma <em>Binary Search</em> tidak memeriksa data satu per satu, melainkan memanfaatkan kelebihan dari kondisi kumpulan data yang <span class="highlight">sudah terurut</span>.</li>
+            <li>Proses pencarian dilakukan pertama kali dengan memeriksa indeks list yang berada di posisi paling tengah (<i>midpoint</i>).</li>
+            <li>Jika data yang dicari sama dengan data pada indeks tengah tersebut, maka proses pencarian langsung berakhir.</li>
+            <li>Jika data yang dicari ternyata <strong>lebih besar</strong> dari data indeks tengah, pencarian akan dilanjutkan. Pengecekan berikutnya hanya dilakukan pada data di area indeks setelah indeks tengah (sebelah kanan), karena seluruh data sebelum indeks tengah dipastikan memiliki nilai yang lebih kecil sehingga tidak perlu diperiksa lagi.</li>
+            <li>Sebaliknya, jika data yang dicari <strong>lebih kecil</strong> dari data indeks tengah, pencarian dipersempit ke area indeks sebelum indeks tengah (sebelah kiri).</li>
+            <li>Proses pembelahan area ini dilakukan secara terus-menerus sampai data ditemukan atau tidak ada lagi ruang data yang dapat dicari di dalam list.</li>
+            <li>Karena tidak perlu memeriksa semua elemen di dalam list, waktu komputasi yang dibutuhkan oleh <em>Binary Search</em> jauh lebih cepat dibandingkan dengan <em>Sequential Search</em>.</li>
+        </ul>
+
+        
+
+[Image of binary search algorithm block diagram]
+
+
+        <blockquote>
+            <p><strong>Contoh Pola Kumpulan Data:</strong><br>
+            Data yang dapat diproses menggunakan <em>Binary Search</em> harus terurut seperti contoh ini: <code>[17, 20, 26, 31, 44, 54, 55, 65, 77, 93]</code>.</p>
+        </blockquote>
+
+        <hr style="border: 0; border-top: 1px solid #e1e4e8; margin: 20px 0;">
+        <h2>BAGIAN 2: KODE PROGRAM (SOURCE CODE)</h2>
+        
+        <h3>1. Fungsi Binary Search Metode Iteratif</h3>
+        <p>Pendekatan ini menggunakan struktur perulangan <code>while</code> untuk menggeser penanda indeks pertama (<code>first</code>) dan indeks terakhir (<code>last</code>).</p>
+    </div>
+
+    <div class="code-cell">
+        <div class="code-input">def binarySearch(listData, data):
+    first = 0
+    last = len(listData) - 1
+    found = False
+    
+    while first <= last and not found:
+        midpoint = (first + last) // 2
+        
+        if listData[midpoint] == data:
+            found = True
+        else:
+            if data < listData[midpoint]:
+                last = midpoint - 1
+            else:
+                first = midpoint + 1
+                
+    return found
+
+# Pengujian Fungsi Iteratif
+a = [4, 6, 10, 34, 56, 78, 99]
+print(binarySearch(a, 34)) # Output: True</div>
+    </div>
+
+    <div class="markdown-cell">
+        <h3>2. Fungsi Binary Search Metode Rekursif</h3>
+        <p>Selain menggunakan perulangan, algoritma ini juga dapat ditulis secara rekursif dengan memanfaatkan fitur pemotongan list (<i>list slicing</i>).</p>
+        <p><i>*Catatan: Terdapat sedikit penyesuaian sintaks penulisan slicing pada sumber asli agar kode dapat dieksekusi dengan valid di Python.</i></p>
+    </div>
+
+    <div class="code-cell">
+        <div class="code-input">def binarySearch2(listData, data):
+    if len(listData) == 0:
+        return False
+    else:
+        midpoint = len(listData) // 2
+        
+        if listData[midpoint] == data:
+            return True
+        else:
+            if data < listData[midpoint]:
+                # Melakukan rekursi pada bagian kiri list
+                return binarySearch2(listData[:midpoint], data)
+            else:
+                # Melakukan rekursi pada bagian kanan list
+                return binarySearch2(listData[midpoint + 1:], data)
+
+# Pengujian Fungsi Rekursif
+a = [4, 6, 10, 34, 56, 78, 99]
+print(binarySearch2(a, 78)) # Output: True</div>
+    </div>
+
+</body>
+</html>
