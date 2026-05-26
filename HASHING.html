@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struktur Data: Hashing & Pencarian</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        h1, h2, h3, h4 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        h2 {
+            border-left: 4px solid #16a085;
+            padding-left: 12px;
+            margin-top: 25px;
+        }
+        h3 {
+            color: #2980b9;
+            margin-top: 20px;
+        }
+        .markdown-cell {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .code-cell {
+            margin-bottom: 25px;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .code-input {
+            background-color: #f6f8fa;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            white-space: pre;
+            overflow-x: auto;
+            color: #24292e;
+            border-bottom: 1px solid #e1e4e8;
+        }
+        .formula {
+            background-color: #f1f2f6;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+            font-family: 'Cambria', serif;
+            font-size: 1.2em;
+            margin: 15px 0;
+            color: #2f3542;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        code {
+            background-color: #f0f2f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.95em;
+            color: #c0392b;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="markdown-cell">
+        <h1>BAGIAN 1: MATERI (TEORI & PENJELASAN)</h1>
+        
+        <h2>1. Pengantar dan Komparasi Algoritma Pencarian</h2>
+        <ul>
+            <li><strong>Sequential Search:</strong> Mencari data secara linier dengan membandingkan target satu per satu dari indeks awal hingga indeks terakhir.</li>
+            <li><strong>Binary Search:</strong> Membagi data menjadi dua grup berdasarkan elemen tengah secara berulang. Memiliki waktu komputasi yang lebih cepat karena hanya memeriksa area yang memenuhi syarat pada data terurut.</li>
+            <li><strong>Hashing:</strong> Teknik pencarian yang dirancang agar setiap data terletak tepat di tempatnya masing-masing, sehingga pencarian elemen hanya membutuhkan <span class="highlight">satu kali proses perbandingan</span> (O(1)).</li>
+        </ul>
+
+        <h2>2. Istilah Dasar dalam Hashing</h2>
+        <ul>
+            <li><strong>Hash Table:</strong> Sebuah struktur atau tempat penyimpanan data yang dirancang sedemikian rupa untuk memudahkan proses pencarian. Tipe data <em>list</em> pada Python dapat digunakan untuk merepresentasikannya.</li>
+            <li><strong>Slot:</strong> Posisi (indeks berbasis integer mulai dari nol hingga ukuran tabel) di dalam <em>hash table</em> yang berfungsi sebagai wadah penyimpanan setiap elemen data.</li>
+            <li><strong>Hash Function:</strong> Sebuah fungsi matematika yang memetakan antara nilai data masukan dengan nomor slot tujuan di dalam <em>hash table</em>.</li>
+            <li><strong>Load Factor (&lambda;):</strong> Persentase tingkat pemakaian atau keterisian data di dalam <em>hash table</em>, yang dihitung melalui rumus persamaan:</li>
+        </ul>
+        
+        <div class="formula">
+            &lambda; = jumlahData / ukuranTabel
+        </div>
+
+        <h2>3. Ragam Hash Function</h2>
+        
+        <h3>A. Remainder Function (Fungsi Modulus)</h3>
+        <ul>
+            <li>Merupakan contoh fungsi hash paling sederhana. Parameter data dihitung sisa baginya terhadap ukuran tabel (<code>data % ukuranTabel</code>).</li>
+            <li><strong>Contoh:</strong> Untuk ukuran tabel 11, data <code>54</code> menghasilkan nilai hash 54 % 11 = 4.</li>
+        </ul>
+
+        <h3>B. Mid-Square Method</h3>
+        <ul>
+            <li>Digunakan untuk meminimalkan penumpukan indeks data (<em>collusion</em>) dengan cara mengkuadratkan nilai data, mengambil karakter/digit bagian tengahnya, kemudian memoduluskannya dengan ukuran tabel.</li>
+            <li><strong>Contoh:</strong> Data <code>35</code> menjadi 35<sup>2</sup> = 1225. Digit tengahnya adalah <code>22</code>, dan hasil akhirnya 22 % 11 = 0.</li>
+        </ul>
+
+        <h3>C. Hash Function untuk String</h3>
+        <ul>
+            <li>Mengonversi teks menjadi representasi angka berdasarkan jumlah nilai kode ASCII dari karakter-karakter penyusunnya menggunakan perintah <code>ord()</code>.</li>
+            <li><strong>Kelemahan & Solusi Anagram:</strong> Fungsi penjumlahan ASCII sederhana akan menghasilkan slot yang sama untuk kata-kata anagram (seperti kata 'dia' dan 'adi'). Solusinya adalah dengan memberikan skema <span class="highlight">bobot perkalian</span> berdasarkan indeks posisi masing-masing karakter di dalam string.</li>
+        </ul>
+
+        <h2>4. Penanganan Collusion (Collusion Resolution)</h2>
+        <ul>
+            <li><strong>Collusion:</strong> Permasalahan ketika dua atau lebih data yang berbeda menghasilkan nilai hash yang sama sehingga mengacu pada satu nomor slot yang sama (misalnya data <code>44</code> dan <code>77</code> yang sama-sama menghasilkan indeks 0 pada modulus 11).</li>
+            <li>Metode penanganan <em>collusion</em> terbagi menjadi:
+                <ol>
+                    <li><strong>Open Addressing:</strong> Mencari posisi slot kosong lain di dalam tabel yang siap ditempati oleh data baru.
+                        <ul>
+                            <li><em>Linear Probing:</em> Mencari slot kosong secara berurutan satu per satu dimulai dari titik lokasi terjadinya <em>collusion</em>.</li>
+                            <li><em>Quadratic Probing:</em> Mencari slot kosong dengan menambahkan nilai lompatan berpola ganjil secara bertahap (+1, +3, +5, +7, ...) dari posisi <em>collusion</em>.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Chaining:</strong> Membiarkan satu slot ditempati oleh beberapa data sekaligus dengan memanfaatkan struktur <em>list</em> atau mata rantai bertumpuk di slot tersebut.</li>
+                </ol>
+            </li>
+        </ul>
+
+        <hr style="border: 0; border-top: 1px solid #e1e4e8; margin: 30px 0;">
+        <h1>BAGIAN 2: KODE PROGRAM (SOURCE CODE)</h1>
+    </div>
+
+    <div class="markdown-cell" style="margin-bottom: 5px; box-shadow: none; background: transparent; padding: 0 20px;">
+        <h3>1. Operasi Hashing Konvensional (Remainder Function)</h3>
+    </div>
+    <div class="code-cell">
+        <div class="code-input">def remainderFunction(data, num):
+    return data % num
+
+def createHashTable(num):
+    temp = []
+    for i in range(num):
+        temp.append('none')
+    return temp
+
+def putData(data, table):
+    for i in range(len(data)):
+        ind = remainderFunction(data[i], len(table))
+        table[ind] = data[i]
+    return table
+
+def searchHash(data, table):
+    hashVal = remainderFunction(data, len(table))
+    if data == table[hashVal]:
+        return True
+    else:
+        return False
+
+# Uji Coba Eksekusi
+a = [54, 26, 93, 17, 77, 31]
+hashTable = createHashTable(11)
+hashTable = putData(a, hashTable)
+print(hashTable)
+# Output: [77, 'none', 'none', 'none', 26, 93, 17, 'none', 'none', 31, 54]
+
+print(searchHash(93, hashTable)) # Output: True</div>
+    </div>
+
+    <div class="markdown-cell" style="margin-bottom: 5px; box-shadow: none; background: transparent; padding: 0 20px;">
+        <h3>2. Fungsi Nilai String Konvensional (ASCII)</h3>
+    </div>
+    <div class="code-cell">
+        <div class="code-input">def strVal(strData):
+    temp = 0
+    for i in range(len(strData)):
+        temp = temp + ord(strData[i])
+    return temp
+
+print(strVal('indonesia'))</div>
+    </div>
+
+    <div class="markdown-cell" style="margin-bottom: 5px; box-shadow: none; background: transparent; padding: 0 20px;">
+        <h3>3. Implementasi Put Data dengan Penanganan Linear Probing</h3>
+    </div>
+    <div class="code-cell">
+        <div class="code-input">def linearProbing(ind, hashTable, data):
+    count = ind
+    found = False
+    
+    # Loop berputar mencari slot kosong hingga kembali ke titik awal minus satu
+    while (count != ind - 1) and not (found):
+        if hashTable[count] == 'none':
+            found = True
+            hashTable[count] = data
+        else:
+            count = count + 1
+            
+        if count == len(hashTable):
+            count = 0
+            
+    return hashTable
+
+def putData3(a, hashTable, functionName):
+    for i in range(len(a)):
+        if functionName == 'reminder':
+            ind = remainderFunction(a[i], len(hashTable))
+        elif functionName == 'midSq':
+            ind = midSqFunction(a[i], len(hashTable)) # Mengasumsikan fungsi midSq tersedia
+            
+        if hashTable[ind] == 'none':
+            hashTable[ind] = a[i]
+        else:
+            # Mengatasi collusion menggunakan Linear Probing
+            hashTable = linearProbing(ind, hashTable, a[i])
+            
+    return hashTable
+
+# Uji Coba Eksekusi dengan Data yang Menyebabkan Collusion (44, 55, 20)
+a = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+hashTable = createHashTable(11)
+hashTable = putData3(a, hashTable, 'reminder')
+print(hashTable)</div>
+    </div>
+
+</body>
+</html>
