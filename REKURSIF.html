@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struktur Data: Pemrograman Rekursif</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        h1, h2, h3, h4 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        h2 {
+            border-left: 4px solid #2980b9;
+            padding-left: 12px;
+            margin-top: 25px;
+        }
+        h3 {
+            color: #16a085;
+            margin-top: 20px;
+        }
+        .markdown-cell {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .code-cell {
+            margin-bottom: 25px;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .code-input {
+            background-color: #f6f8fa;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            white-space: pre;
+            overflow-x: auto;
+            color: #24292e;
+            border-bottom: 1px solid #e1e4e8;
+        }
+        .code-output {
+            background-color: #ffffff;
+            padding: 12px 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+            color: #444;
+            white-space: pre-wrap;
+            border-left: 4px solid #28a745;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        code {
+            background-color: #f0f2f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.95em;
+            color: #c0392b;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="markdown-cell">
+        <h1>REKURSIF</h1>
+        
+        <h2>1. Pengantar Pemrograman Rekursif</h2>
+        <ul>
+            <li>Beberapa permasalahan tertentu di dalam pemrograman membutuhkan penyelesaian dengan cara perulangan, seperti masalah pengurutan data, perhitungan deret, dan sebagainya.</li>
+            <li>Terdapat dua metode utama yang dapat digunakan untuk menyelesaikan permasalahan perulangan tersebut, yaitu:
+                <ol>
+                    <li><strong>Iteratif:</strong> Penyelesaian menggunakan struktur perulangan konvensional dengan <i>syntax</i> <code>for</code> atau <code>while</code>.</li>
+                    <li><strong>Rekursif:</strong> Teknik pemrograman yang memecah masalah besar menjadi sub-masalah dengan ukuran yang semakin kecil agar lebih mudah dipecahkan.</li>
+                </ol>
+            </li>
+        </ul>
+
+        <h2>2. Karakteristik dan Aturan Rekursif</h2>
+        <ul>
+            <li>Teknik rekursif dilakukan dengan cara <strong>memanggil fungsi itu sendiri</strong> di dalam tubuh fungsi tersebut.</li>
+            <li>Setiap pemanggilan rekursif harus melibatkan argumen atau parameter yang berukuran lebih kecil dari state sebelumnya.</li>
+            <li>Terdapat tiga aturan penting yang wajib dipenuhi dalam teknik rekursif:
+                <ul>
+                    <li><strong>Memiliki Base Case:</strong> Kondisi dasar yang berfungsi untuk menghentikan pemanggilan fungsi secara terus-menerus (mencegah <i>infinite loop</i>).</li>
+                    <li><strong>Mengubah State:</strong> Fungsi harus memiliki sintaks yang mampu mengubah status permasalahan, sehingga seiring berjalan waktu solusi akan bergerak mendekati <i>base case</i>.</li>
+                    <li><strong>Memanggil Diri Sendiri:</strong> Fungsi harus memanggil dirinya sendiri.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>3. Contoh Kasus Eksperimen Rekursif</h2>
+        
+        <h3>A. Perhitungan Faktorial</h3>
+        <ul>
+            <li>Pola matematika faktorial didefinisikan sebagai <b>n! = n &times; (n-1) &times; (n-2) &times; ... &times; 1</b>.</li>
+            <li>Secara rekursif, faktorial dapat dirumuskan menjadi: <b>n! = n &times; (n-1)!</b> dengan <i>base case</i> <b>1! = 1</b>.</li>
+        </ul>
+
+        <h3>B. Triangular Numbers</h3>
+        <ul>
+            <li><i>Triangular numbers</i> merupakan deret bilangan yang membentuk susunan kotak/titik menyerupai segitiga: <code>1, 3, 6, 10, 15, 21, 28, 36, ...</code>.</li>
+            <li>Untuk menentukan deret ke-<i>n</i>, kita menjumlahkan bilangan dari <i>n</i> mundur hingga 1. Contohnya pada deret ke-4 (<i>n=4</i>), jumlah totalnya adalah <b>4 + 3 + 2 + 1 = 10</b>. <i>Base case</i> dari masalah ini tercapai ketika deret ke-1 bernilai 1.</li>
+        </ul>
+
+        <h3>C. Konversi Bilangan (Desimal ke Base Lain)</h3>
+        <ul>
+            <li>Bilangan integer standar menggunakan basis 10 (desimal) dengan karakter angka <code>0</code> s.d <code>9</code>. Basis 2 (biner) hanya menggunakan angka <code>0</code> dan <code>1</code>. Basis 8 (oktal) menggunakan <code>0</code> s.d <code>7</code>. Basis 16 (heksadesimal) menggunakan kombinasi angka <code>0</code> s.d <code>9</code> serta huruf <code>A</code> sampai <code>F</code>.</li>
+            <li>Proses konversi dari desimal ke basis lain memanfaatkan operasi pembagian bulat (<code>//</code>) dan sisa bagi atau modulo (<code>%</code>) secara berulang.</li>
+        </ul>
+
+        <h3>D. Towers of Hanoi</h3>
+        <ul>
+            <li>Terinspirasi dari mitos sebuah kuil di India di mana pendeta diperintahkan memindahkan 64 piringan emas dengan ukuran berbeda-beda dari tiang asal ke tiang tujuan lewat tiang bantuan.</li>
+            <li>Aturan pemindahan piringan:
+                <ul>
+                    <li>Piringan harus dipindahkan satu demi satu.</li>
+                    <li>Piringan berukuran lebih kecil harus selalu berada di atas piringan yang lebih besar.</li>
+                </ul>
+            </li>
+            <li><span class="highlight">Algoritma Rekursif Hanoi untuk n piringan:</span>
+                <ol>
+                    <li>Pindahkan piringan sebanyak <i>n-1</i> dari tiang awal ke tiang bantuan melalui tiang tujuan.</li>
+                    <li>Pindahkan piringan terbesar (ke-<i>n</i>) langsung dari tiang awal ke tiang tujuan.</li>
+                    <li>Pindahkan kembali piringan sebanyak <i>n-1</i> dari tiang bantuan ke tiang tujuan melalui tiang awal.</li>
+                </ol>
+            </li>
+        </ul>
+
+        <h3>4. Visualisasi Grafik secara Rekursif (Modul Turtle & Fraktal)</h3>
+        <ul>
+            <li>Rekursif dapat dimanfaatkan untuk keperluan visualisasi gambar menggunakan modul <strong>Turtle</strong> pada Python.</li>
+            <li>Modul Turtle diumpamakan sebagai seekor kura-kura pembawa pena. Jika posisi ekornya turun (<i>down</i>), ia akan menggambar pola seiring pergerakannya, sedangkan jika ekornya naik (<i>up</i>), ia tidak akan menggambar.</li>
+            <li><strong>Fraktal:</strong> Cabang matematika yang memiliki kemiripan dengan rekursif, di mana terdapat suatu bentuk geometri dasar yang dikembangkan secara berulang terus-menerus. Contoh fraktal yang dibahas adalah struktur bentuk pohon (<i>tree</i>) dan <strong>Segitiga Sierpinski</strong> (segitiga yang di dalamnya melahirkan fraktal empat buah segitiga baru dengan ukuran sama secara berulang).</li>
+        </ul>
+
+        <hr style="border: 0; border-top: 1px solid #e1e4e8; margin: 30px 0;">
+        <h1>KODE PROGRAM (SOURCE CODE)</h1>
+    </div>
+
+    <div class="markdown-cell" style="margin-bottom: 5px; box-shadow: none; background: transparent; padding: 0 20px;">
+        <h3>1. Perhitungan Faktorial (Iteratif)</h3>
+    </div>
+    <div class="code-cell">
+        <div class="code-input">def factorialIteratif(bilangan):
+    if bilangan <= 1:
+        return 1
+    else:
+        temp = bilangan
+        hasil = 1
+        while temp > 1:
+            hasil = hasil * temp
+            temp = temp - 1
+        return hasil
+
+print(factorialIteratif(4)) # Output: 24</div>
+        <div class="code-output">24</div>
+    </div>
+
+    <div class="markdown-cell" style="margin-bottom: 5px; box-shadow: none; background: transparent; padding: 0 20px;">
+        <h3>2. Perhitungan Faktorial (Rekursif)</h3>
+    </div>
+    <div class="code-cell">
+        <div class="code-input">def factorialRekursif(bilangan):
+    if bilangan <= 1: # Base Case
+        return 1
+    else:
+        return bilangan * factorialRekursif(bilangan - 1) # Rekursi
+
+data = factorialRekursif(4)
+print(data) # Output: 24</div>
+        <div class="code-output">24</div>
+    </div>
+
+    <div class="markdown-cell" style="margin-bottom: 5px; box-shadow: none; background: transparent; padding: 0 20px;">
+        <h3>3. Perhitungan Triangular Numbers (Iteratif)</h3>
+    </div>
+    <div class="code-cell">
+        <div class="code-input">def triangularNumbers1(n):
+    total = 0
+    temp = n
+    while temp >= 1:
+        total += temp
+        temp -= 1
+    return total
+
+print(triangularNumbers1(2)) # Output: 3</div>
+        <div class="code-output">3</div>
+    </div>
+
+    <div class="markdown-cell" style="margin-bottom: 5px; box-shadow: none; background: transparent; padding: 0 20px;">
+        <h3>4. Perhitungan Triangular Numbers (Rekursif)</h3>
+    </div>
+    <div class="code-cell">
+        <div class="code-input">def triangularNumbers2(n):
+    if n == 1: # Base Case
+        return 1
+    else:
+        return n + triangularNumbers2(n - 1) # Rekursi
+
+print(triangularNumbers2(8)) # Output: 36</div>
+        <div class="code-output">36</div>
+    </div>
+
+    <div class="markdown-cell" style="margin-bottom: 5px; box-shadow: none; background: transparent; padding: 0 20px;">
+        <h3>5. Konversi Bilangan Desimal ke Basis Lain</h3>
+    </div>
+    <div class="code-cell">
+        <div class="code-input">def konversiDesimal(bilangan, base):
+    charBilangan = '0123456789ABCDEF'
+    if bilangan < base: # Base Case
+        return charBilangan[bilangan]
+    else:
+        temp = bilangan // base
+        ind = bilangan % base
+        return konversiDesimal(temp, base) + charBilangan[ind]
+
+print(konversiDesimal(5, 2)) # Output: 101 (Biner)</div>
+        <div class="code-output">101</div>
+    </div>
+
+    <div class="markdown-cell" style="margin-bottom: 5px; box-shadow: none; background: transparent; padding: 0 20px;">
+        <h3>6. Penyelesaian Towers of Hanoi</h3>
+    </div>
+    <div class="code-cell">
+        <div class="code-input">def towers(n, awal, bantuan, tujuan):
+    if n == 1: # Base Case
+        print("Piringan 1 dari-", awal, "ke-", tujuan)
+    else:
+        # Pindahkan n-1 piringan ke tiang bantuan
+        towers(n - 1, awal, tujuan, bantuan)
+        # Pindahkan piringan utama ke tiang tujuan
+        print("Piringan", n, "dari-", awal, "ke-", tujuan)
+        # Pindahkan n-1 piringan dari tiang bantuan ke tiang tujuan
+        towers(n - 1, bantuan, awal, tujuan)
+
+# Uji coba memindahkan 4 piringan
+towers(4, 'A', 'B', 'C')</div>
+        <div class="code-output">Piringan 1 dari- A ke- B
+Piringan 2 dari- A ke- C
+Piringan 1 dari- B ke- C
+Piringan 3 dari- A ke- B
+Piringan 1 dari- C ke- A
+Piringan 2 dari- C ke- B
+Piringan 1 dari- A ke- B
+Piringan 4 dari- A ke- C
+Piringan 1 dari- B ke- C
+Piringan 2 dari- B ke- A
+Piringan 1 dari- C ke- A
+Piringan 3 dari- B ke- C
+Piringan 1 dari- A ke- B
+Piringan 2 dari- A ke- C
+Piringan 1 dari- B ke- C</div>
+    </div>
+
+    <div class="markdown-cell" style="background-color: #fff3cd; border-left: 4px solid #ffc107;">
+        <h4>Catatan Modul Visualisasi Grafik (Turtle & Fraktal)</h4>
+        <p>Kode fungsi visualisasi grafis (pola spiral, fraktal pohon, dan Segitiga Sierpinski) di dalam skrip notebook membutuhkan lingkungan GUI lokal untuk menampilkan jendela visual interaktifnya, sehingga visualisasinya tidak menghasilkan output teks langsung (stdout) di dalam platform web server statis.</p>
+    </div>
+
+</body>
+</html>
