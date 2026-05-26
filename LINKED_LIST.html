@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struktur Data: Linked List</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        h2 {
+            border-left: 4px solid #2980b9;
+            padding-left: 12px;
+            margin-top: 25px;
+        }
+        h3 {
+            color: #16a085;
+            margin-top: 20px;
+        }
+        .markdown-cell {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .code-cell {
+            margin-bottom: 25px;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .code-input {
+            background-color: #f6f8fa;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            white-space: pre;
+            overflow-x: auto;
+            color: #24292e;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        code {
+            background-color: #f0f2f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.95em;
+            color: #c0392b;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="markdown-cell">
+        <h1>BAGIAN 1: MATERI (TEORI & PENJELASAN)</h1>
+        
+        <h2>1. Konsep Dasar Linked List</h2>
+        <ul>
+            <li><strong>Keterbatasan List/Array:</strong> Pada tipe data List konvensional, elemen-elemen data disimpan pada memori secara berurutan (<i>contiguous memory</i>). Hal ini membuat proses penambahan atau penyisipan data di tengah list membutuhkan waktu komputasi yang besar karena sistem harus menggeser posisi data-data di sekitarnya.</li>
+            <li><strong>Definisi Linked List:</strong> Linked List adalah struktur data linier yang dibuat untuk mengatasi keterbatasan tersebut. Berbeda dengan List biasa, setiap elemen pada Linked List tidak diletakkan pada memori yang berurutan, melainkan tersebar secara acak di dalam memori.</li>
+            <li><strong>Mekanisme Penghubung:</strong> Untuk menghubungkan antar data yang tersebar tersebut, setiap elemen Linked List tidak hanya menyimpan data itu sendiri, tetapi juga menyimpan informasi mengenai lokasi (alamat/referensi) memori dari data berikutnya.</li>
+        </ul>
+
+        <h2>2. Struktur Anatomi Elemen (Node)</h2>
+        <p>Linked List dibentuk oleh sekumpulan struktur yang disebut <span class="highlight">Node</span> (simpul). Sebuah Node terbagi menjadi dua bagian utama:</p>
+        <ul>
+            <li><strong>Data Field:</strong> Bagian yang digunakan untuk menyimpan nilai atau data yang sebenarnya dari elemen tersebut.</li>
+            <li><strong>Next / Pointer Field:</strong> Bagian yang digunakan untuk menyimpan referensi atau alamat memori dari Node berikutnya.</li>
+        </ul>
+
+        <h2>3. Istilah-Istilah Penting pada Linked List</h2>
+        <ul>
+            <li><strong>Head:</strong> Node pertama atau ujung paling depan dari sebuah Linked List. <code>Head</code> merupakan gerbang utama untuk mengakses seluruh data di dalam antrian Linked List. Jika <code>Head</code> bernilai <code>None</code>, artinya Linked List tersebut dalam keadaan kosong.</li>
+            <li><strong>Tail:</strong> Node terakhir dari sebuah Linked List. Karena tidak ada data lagi setelahnya, maka bagian <em>Next Pointer</em> dari <code>Tail</code> akan selalu menunjuk ke nilai kosong atau <code>None</code>.</li>
+        </ul>
+
+        <h2>4. Operasi Dasar pada Linked List</h2>
+        <p>Beberapa operasi standar yang dapat dilakukan pada struktur data Linked List meliputi:</p>
+        <ul>
+            <li><code>Node(data)</code>: Membuat sebuah objek simpul baru yang menampung data tertentu.</li>
+            <li><code>LinkedList()</code>: Menginisialisasi sebuah struktur data Linked List baru yang kosong (ditandai dengan <code>Head</code> bernilai <code>None</code>).</li>
+            <li><code>add(data)</code>: Menambahkan Node baru ke dalam Linked List. Penambahan paling efisien umumnya dilakukan di bagian depan (menjadi <code>Head</code> yang baru).</li>
+            <li><code>remove(data)</code>: Mencari dan menghapus Node yang memiliki data tertentu dari dalam Linked List, kemudian menyambungkan kembali Pointer antara Node sebelum dan sesudahnya.</li>
+            <li><code>search(data)</code>: Melakukan penelusuran secara linier dari <code>Head</code> ke depan untuk memeriksa apakah suatu data terdapat di dalam Linked List (mengembalikan <code>True</code> atau <code>False</code>).</li>
+            <li><code>isEmpty()</code>: Memeriksa apakah Linked List dalam keadaan kosong atau tidak.</li>
+            <li><code>size()</code>: Menghitung jumlah total Node yang ada di dalam Linked List dengan cara melakukan <em>traversing</em> (penelusuran) dari Node pertama hingga Node terakhir.</li>
+        </ul>
+
+        <hr style="border: 0; border-top: 1px solid #e1e4e8; margin: 30px 0;">
+        <h1>BAGIAN 2: KODE PROGRAM (SOURCE CODE)</h1>
+    </div>
+
+    <div class="markdown-cell" style="margin-bottom: 5px; box-shadow: none; background: transparent; padding: 0 20px;">
+        <h3>1. Pembuatan Kelas Node</h3>
+        <p>Kelas ini digunakan sebagai cetakan (<i>blueprint</i>) untuk memproduksi setiap Node tunggal di dalam Linked List.</p>
+    </div>
+    <div class="code-cell">
+        <div class="code-input">class Node:
+    def __init__(self, init_data):
+        self.data = init_data
+        self.next = None
+
+    def get_data(self):
+        return self.data
+
+    def get_next(self):
+        return self.next
+
+    def set_data(self, new_data):
+        self.data = new_data
+
+    def set_next(self, new_next):
+        self.next = new_next</div>
+    </div>
+
+    <div class="markdown-cell" style="margin-bottom: 5px; box-shadow: none; background: transparent; padding: 0 20px;">
+        <h3>2. Pembuatan Kelas Utama Linked List</h3>
+        <p>Kelas ini mengelola kumpulan Node dan menyediakan metode-metode manipulasi data (operasi dasar).</p>
+    </div>
+    <div class="code-cell">
+        <div class="code-input">class LinkedList:
+    def __init__(self):
+        # Inisialisasi linked list kosong
+        self.head = None
+
+    def is_empty(self):
+        return self.head is None
+
+    def add(self, item):
+        # Menambahkan data baru di posisi paling depan (Head)
+        temp = Node(item)
+        temp.set_next(self.head)
+        self.head = temp
+
+    def size(self):
+        # Menghitung jumlah node dengan melakukan traversing
+        current = self.head
+        count = 0
+        while current is not None:
+            count = count + 1
+            current = current.get_next()
+        return count
+
+    def search(self, item):
+        # Mencari keberadaan data di dalam list
+        current = self.head
+        found = False
+        while current is not None and not found:
+            if current.get_data() == item:
+                found = True
+            else:
+                current = current.get_next()
+        return found
+
+    def remove(self, item):
+        # Menghapus node tertentu dari list
+        current = self.head
+        previous = None
+        found = False
+        
+        while current is not None and not found:
+            if current.get_data() == item:
+                found = True
+            else:
+                previous = current
+                current = current.get_next()
+                
+        if found:
+            if previous is None:
+                # Jika data yang dihapus berada di Head
+                self.head = current.get_next()
+            else:
+                # Menyambungkan pointer melewati node yang dihapus
+                previous.set_next(current.get_next())</div>
+    </div>
+
+    <div class="markdown-cell" style="margin-bottom: 5px; box-shadow: none; background: transparent; padding: 0 20px;">
+        <h3>3. Contoh Penggunaan Linked List</h3>
+        <p>Berikut adalah simulasi eksekusi program untuk membuat, menambah, menghitung, dan memanipulasi objek Linked List:</p>
+    </div>
+    <div class="code-cell">
+        <div class="code-input"># 1. Membuat Linked List Baru
+my_list = LinkedList()
+
+# 2. Memeriksa Status Awal
+print(my_list.is_empty())  # Output: True
+
+# 3. Menambahkan Beberapa Data ke dalam List
+my_list.add(31)
+my_list.add(77)
+my_list.add(17)
+my_list.add(93)
+my_list.add(26)
+my_list.add(54)
+
+# Note: Karena penambahan dilakukan di Head, urutan list dari depan adalah:
+# [54] -> [26] -> [93] -> [17] -> [77] -> [31] -> None
+
+# 4. Memeriksa Ukuran List
+print(my_list.size())  # Output: 6
+
+# 5. Melakukan Pencarian Data
+print(my_list.search(17))  # Output: True
+print(my_list.search(100)) # Output: False
+
+# 6. Menghapus Data dari List
+my_list.remove(93)
+print(my_list.size())  # Output: 5
+print(my_list.search(93)) # Output: False</div>
+    </div>
+
+</body>
+</html>
