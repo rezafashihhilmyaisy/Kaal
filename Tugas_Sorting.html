@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Perbandingan Algoritma Sorting</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 3px solid #34495e;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        h2 {
+            border-left: 4px solid #2980b9;
+            padding-left: 10px;
+            margin-top: 25px;
+        }
+        .markdown-cell {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .code-cell {
+            margin-bottom: 25px;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .code-input {
+            background-color: #f6f8fa;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            white-space: pre;
+            overflow-x: auto;
+            color: #24292e;
+            border-bottom: 1px solid #e1e4e8;
+        }
+        .code-output {
+            background-color: #1e272e;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+            color: #ffdd59;
+            white-space: pre-wrap;
+            border-left: 4px solid #ffd32a;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .diagram-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="markdown-cell">
+        <h1>Analisis Perbandingan Waktu Eksekusi Algoritma Sorting</h1>
+        <p>Analisis mengenai perbandingan waktu eksekusi algoritma <em>sorting</em> sangat menarik, terutama untuk melihat bagaimana perbedaan <strong>kompleksitas waktu (Time Complexity)</strong> memengaruhi performa di dunia nyata.</p>
+        <p>Meskipun data berukuran 100 hingga 500 cenderung kecil untuk komputer modern saat ini—sehingga perbedaannya mungkin dalam hitungan milidetik (<i>milliseconds</i>) atau bahkan mikrodetik (<i>microseconds</i>)—tren pertumbuhannya akan terlihat sangat jelas.</p>
+        
+        <div class="diagram-container">
+            
+        </div>
+
+        <h2>1. Kelompok Algoritma Lambat (Bubble, Selection, Insertion)</h2>
+        <p>Pada jumlah data yang relatif kecil (100-500), kelompok ini masih bisa mengeksekusi data dengan cepat, namun grafik pertambahan waktunya akan melengkung tajam ke atas (eksponensial / kuadratik).</p>
+        <ul>
+            <li><span class="highlight">Bubble Sort:</span> Hampir selalu menjadi yang <strong>paling lambat</strong>. Algoritma ini melakukan banyak sekali operasi pertukaran (<i>swap</i>) data di setiap langkahnya.</li>
+            <li><span class="highlight">Selection Sort:</span> Biasanya sedikit lebih cepat daripada Bubble Sort karena jumlah pertukaran (<i>swap</i>) datanya diminimalisir (maksimal hanya <i>n</i> kali), meskipun jumlah perbandingannya tetap tinggi.</li>
+            <li><span class="highlight">Insertion Sort:</span> Merupakan yang <strong>terbaik di kelompok ini</strong>. Jika data acaknya kebetulan agak terurut, Insertion Sort bekerja sangat efisien. Pada data 100, ia bahkan bisa bersaing dengan kelompok cepat.</li>
+        </ul>
+
+        <h2>2. Kelompok Algoritma Cepat (Merge, Quick)</h2>
+        <p>Kelompok ini menggunakan pendekatan <em>Divide and Conquer</em> (bagi dan kuasai). Pertumbuhan waktu eksekusinya cenderung landai (linear-logaritmik).</p>
+        <ul>
+            <li><span class="highlight">Quick Sort:</span> Pada data acak, Quick Sort biasanya menjadi yang paling cepat di antara semuanya karena faktor konstanta operasinya di memori yang sangat kecil.</li>
+            <li><span class="highlight">Merge Sort:</span> Sangat stabil dan konsisten di setiap kondisi data. Sedikit lebih lambat dari Quick Sort pada data acak karena Merge Sort membutuhkan memori tambahan untuk melakukan proses penggabungan (<i>merge</i>).</li>
+        </ul>
+    </div>
+
+    <div class="code-cell">
+        <div class="code-input">import random
+import time
+
+# =========================================================
+# BUBBLE SORT
+# =========================================================
+def bubble_sort(arr):
+    data = arr.copy()
+
+    for i in range(len(data)):
+        for j in range(0, len(data)-i-1):
+            if data[j] > data[j+1]:
+                data[j], data[j+1] = data[j+1], data[j]
+
+    return data
+
+
+# =========================================================
+# SELECTION SORT
+# =========================================================
+def selection_sort(arr):
+    data = arr.copy()
+
+    for i in range(len(data)):
+        min_index = i
+
+        for j in range(i+1, len(data)):
+            if data[j] < data[min_index]:
+                min_index = j
+
+        data[i], data[min_index] = data[min_index], data[i]
+
+    return data
+
+
+# =========================================================
+# INSERTION SORT
+# =========================================================
+def insertion_sort(arr):
+    data = arr.copy()
+
+    for i in range(1, len(data)):
+        key = data[i]
+        j = i - 1
+
+        while j >= 0 and key < data[j]:
+            data[j+1] = data[j]
+            j -= 1
+
+        data[j+1] = key
+
+    return data
+
+
+# =========================================================
+# MERGE SORT
+# =========================================================
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+
+    mid = len(arr) // 2
+
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+
+    return merge(left, right)
+
+
+def merge(left, right):
+    result = []
+    i = 0
+    j = 0
+
+    while i < len(left) and j < len(right):
+        if left[i] < right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+
+    result.extend(left[i:])
+    result.extend(right[j:])
+
+    return result
+
+
+# =========================================================
+# QUICK SORT
+# =========================================================
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+
+    pivot = arr[len(arr)//2]
+
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+
+    return quick_sort(left) + middle + quick_sort(right)
+
+
+# PENGUJIAN WAKTU SORTING
+ukuran_data = [100, 300, 500]
+
+for ukuran in ukuran_data:
+
+    print("============================================================")
+    print("Jumlah Data :", ukuran)
+
+    data = [random.randint(1, 1000) for _ in range(ukuran)]
+
+    # Bubble Sort
+    start = time.time()
+    bubble_sort(data)
+    end = time.time()
+    print("Bubble Sort     :", end - start, "detik")
+
+    # Selection Sort
+    start = time.time()
+    selection_sort(data)
+    end = time.time()
+    print("Selection Sort  :", end - start, "detik")
+
+    # Insertion Sort
+    start = time.time()
+    insertion_sort(data)
+    end = time.time()
+    print("Insertion Sort  :", end - start, "detik")
+
+    # Merge Sort
+    start = time.time()
+    merge_sort(data)
+    end = time.time()
+    print("Merge Sort      :", end - start, "detik")
+
+    # Quick Sort
+    start = time.time()
+    quick_sort(data)
+    end = time.time()
+    print("Quick Sort      :", end - start, "detik")</div>
+        <div class="code-output">============================================================
+Jumlah Data : 100
+Bubble Sort     : 0.0010132789611816406 detik
+Selection Sort  : 0.00026035308837890625 detik
+Insertion Sort  : 0.0002224445343017578 detik
+Merge Sort      : 0.00022172927856445312 detik
+Quick Sort      : 0.0001201629638671875 detik
+============================================================
+Jumlah Data : 300
+Bubble Sort     : 0.0037047863006591797 detik
+Selection Sort  : 0.0017902851104736328 detik
+Insertion Sort  : 0.0017399787902832031 detik
+Merge Sort      : 0.0005228519439697266 detik
+Quick Sort      : 0.00038242340087890625 detik
+============================================================
+Jumlah Data : 500
+Bubble Sort     : 0.012436151504516602 detik
+Selection Sort  : 0.005587100982666016 detik
+Insertion Sort  : 0.005329608917236328 detik
+Merge Sort      : 0.0008935928344726562 detik
+Quick Sort      : 0.0007011890411376953 detik</div>
+    </div>
+
+    <div class="markdown-cell">
+        <h2>Kesimpulan Analisis</h2>
+        <p>Jika Anda menjalankan program tersebut dan memplot hasilnya ke dalam sebuah grafik, Anda akan melihat fenomena berikut:</p>
+        <ol>
+            <li><strong>Pada 100 Data:</strong> Selisih waktu antar algoritma akan terasa sangat tipis, bahkan mungkin mendekati 0 milidetik pada arsitektur komputer modern.</li>
+            <li><strong>Pada 300 & 500 Data:</strong> Jarak performa mulai melebar secara signifikan. Waktu eksekusi Bubble Sort dan Selection Sort melonjak tajam. Hal ini sesuai dengan karakteristik kompleksitas kuadratik $O(n^2)$, di mana jika jumlah data naik 5x lipat (dari 100 ke 500), waktu komputasi kasarnya akan meningkat sekitar 25x lipat. Sebaliknya, grafik Quick Sort dan Merge Sort ($O(n \log n)$) akan tetap terlihat landai dan hampir mendatar.</li>
+        </ol>
+    </div>
+
+</body>
+</html>
