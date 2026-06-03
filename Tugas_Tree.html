@@ -102,6 +102,75 @@
 
             output.textContent = hasil;
         }
+        <h1>Tugas Tree</h1>
+
+    <h2>Input Ekspresi</h2>
+
+    <input type="text" id="expression" placeholder="Contoh: a+b">
+    <button onclick="buatParseTree()">Proses</button>
+
+    <h2>Hasil</h2>
+
+    <pre id="output"></pre>
+
+    <script>
+        class Node {
+            constructor(value) {
+                this.value = value;
+                this.left = null;
+                this.right = null;
+            }
+        }
+
+        function printTree(node, level = 0, result = []) {
+            if (node !== null) {
+                printTree(node.right, level + 1, result);
+
+                result.push(
+                    " ".repeat(level * 4) + "-> " + node.value
+                );
+
+                printTree(node.left, level + 1, result);
+            }
+            return result;
+        }
+
+        function buatParseTree() {
+            const expression = document.getElementById("expression").value;
+            const output = document.getElementById("output");
+
+            let hasil = "";
+
+            const tokens = [...expression];
+
+            hasil += "Token yang dibaca:\n";
+            for (let token of tokens) {
+                hasil += "Membaca token: " + token + "\n";
+            }
+
+            if (tokens.length !== 3) {
+                hasil += "\nFormat harus seperti: a+b";
+                output.textContent = hasil;
+                return;
+            }
+
+            const leftOperand = tokens[0];
+            const operator = tokens[1];
+            const rightOperand = tokens[2];
+
+            hasil += "\n\nCurrent Node: " + operator + "\n";
+
+            const root = new Node(operator);
+            root.left = new Node(leftOperand);
+            root.right = new Node(rightOperand);
+
+            hasil += "\nParse Tree:\n";
+
+            const tree = printTree(root);
+            hasil += tree.join("\n");
+
+            output.textContent = hasil;
+        }
     </script>
 
     <hr>
