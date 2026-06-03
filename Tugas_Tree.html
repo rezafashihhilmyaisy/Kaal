@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parse Tree Sederhana</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            line-height: 1.6;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        input, button {
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Tugas Tree</h1>
+
+    <h2>Input Ekspresi</h2>
+
+    <input type="text" id="expression" placeholder="Contoh: a+b">
+    <button onclick="buatParseTree()">Proses</button>
+
+    <h2>Hasil</h2>
+
+    <pre id="output"></pre>
+
+    <script>
+        class Node {
+            constructor(value) {
+                this.value = value;
+                this.left = null;
+                this.right = null;
+            }
+        }
+
+        function printTree(node, level = 0, result = []) {
+            if (node !== null) {
+                printTree(node.right, level + 1, result);
+                result.push(" ".repeat(level * 4) + "-> " + node.value);
+                printTree(node.left, level + 1, result);
+            }
+            return result;
+        }
+
+        function buatParseTree() {
+            const expression = document.getElementById("expression").value;
+            const output = document.getElementById("output");
+
+            let hasil = "";
+
+            const tokens = expression.split("");
+
+            hasil += "Token yang dibaca:\n";
+
+            tokens.forEach(token => {
+                hasil += "Membaca token: " + token + "\n";
+            });
+
+            if (tokens.length !== 3) {
+                hasil += "\nFormat harus seperti: a+b";
+                output.textContent = hasil;
+                return;
+            }
+
+            const leftOperand = tokens[0];
+            const operator = tokens[1];
+            const rightOperand = tokens[2];
+
+            hasil += "\nCurrent Node: " + operator + "\n";
+
+            const root = new Node(operator);
+            root.left = new Node(leftOperand);
+            root.right = new Node(rightOperand);
+
+            hasil += "\nParse Tree:\n";
+
+            const treeResult = printTree(root);
+            hasil += treeResult.join("\n");
+
+            output.textContent = hasil;
+        }
+    </script>
+
+    <hr>
+
+    <h2>Penjelasan</h2>
+
+    <h3>1. Token</h3>
+    <p>
+        Token adalah unit atau bagian terkecil dari input yang dibaca oleh parser.
+        Token dapat berupa angka, variabel, operator, maupun tanda kurung.
+    </p>
+
+    <p>Contoh ekspresi:</p>
+    <pre>a + b</pre>
+
+    <p>Token yang dihasilkan:</p>
+    <pre>['a', '+', 'b']</pre>
+
+    <p>
+        Pada proses parsing, token dibaca satu per satu untuk membangun struktur pohon (tree).
+    </p>
+
+    <h3>2. Current Node</h3>
+    <p>
+        Current Node adalah node yang sedang aktif atau sedang diproses oleh parser
+        saat membangun Parse Tree.
+    </p>
+
+    <p>Contoh:</p>
+    <pre>a + b</pre>
+
+    <p>
+        Ketika parser membaca token "+", maka current node berpindah ke node operator "+".
+        Saat membaca "a" atau "b", current node berada pada node yang menyimpan nilai tersebut.
+    </p>
+
+    <p>
+        Current Node digunakan untuk menentukan posisi node baru yang akan ditambahkan ke dalam tree.
+    </p>
+
+    <h3>3. Parse Tree</h3>
+    <p>
+        Parse Tree adalah struktur pohon yang menggambarkan hubungan antara operator dan operand
+        dalam suatu ekspresi.
+    </p>
+
+</body>
+</html>
